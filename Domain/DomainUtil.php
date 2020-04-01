@@ -74,8 +74,6 @@ abstract class DomainUtil
      *
      * @param ObjectManager $om        The doctrine object manager
      * @param string        $className The class name
-     *
-     * @return string
      */
     public static function getIdentifierName(ObjectManager $om, string $className): string
     {
@@ -193,8 +191,6 @@ abstract class DomainUtil
      * @param TranslatorInterface $translator The translator
      * @param \Exception          $exception  The exception
      * @param bool                $debug      The debug mode
-     *
-     * @return string
      */
     public static function getExceptionMessage(TranslatorInterface $translator, \Exception $exception, bool $debug = false): string
     {
@@ -234,8 +230,6 @@ abstract class DomainUtil
      * @param ResourceInterface   $resource   The resource
      * @param \Exception          $e          The exception on persist action
      * @param bool                $debug      The debug mode
-     *
-     * @return bool
      */
     public static function injectErrorMessage(TranslatorInterface $translator, ResourceInterface $resource, \Exception $e, bool $debug = false): bool
     {
@@ -251,8 +245,6 @@ abstract class DomainUtil
 
     /**
      * Get the map of object hash and constraint violation list.
-     *
-     * @param ConstraintViolationListInterface $errors
      *
      * @return array The map of object hash and constraint violation list
      */
@@ -280,8 +272,6 @@ abstract class DomainUtil
      * @param DriverException $exception The exception
      * @param string          $message   The message
      * @param bool            $debug     The debug mode
-     *
-     * @return string
      */
     protected static function extractDriverExceptionMessage(DriverException $exception, string $message, bool $debug = false): string
     {
@@ -299,10 +289,6 @@ abstract class DomainUtil
 
     /**
      * Get the initial exception.
-     *
-     * @param \Exception $exception
-     *
-     * @return \Exception
      */
     protected static function getFirstException(\Exception $exception): \Exception
     {
@@ -319,8 +305,6 @@ abstract class DomainUtil
      * @param TranslatorInterface $translator The translator
      * @param \Exception          $exception  The exception
      * @param bool                $debug      The debug mode
-     *
-     * @return string
      */
     protected static function getDatabaseErrorMessage(TranslatorInterface $translator, \Exception $exception, bool $debug = false): string
     {

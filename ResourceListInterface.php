@@ -22,8 +22,6 @@ interface ResourceListInterface extends \Traversable, \Countable, \ArrayAccess
 {
     /**
      * Get the status of action by the resource domain.
-     *
-     * @return string
      */
     public function getStatus(): string;
 
@@ -61,8 +59,6 @@ interface ResourceListInterface extends \Traversable, \Countable, \ArrayAccess
      * @param int $offset The offset
      *
      * @throws \OutOfBoundsException When the offset does not exist
-     *
-     * @return ResourceInterface
      */
     public function get($offset): ResourceInterface;
 
@@ -70,8 +66,6 @@ interface ResourceListInterface extends \Traversable, \Countable, \ArrayAccess
      * Check if the resource exist.
      *
      * @param int $offset The offset
-     *
-     * @return bool
      */
     public function has(int $offset): bool;
 
@@ -92,15 +86,11 @@ interface ResourceListInterface extends \Traversable, \Countable, \ArrayAccess
 
     /**
      * Get the errors defined for this list (not include the children error).
-     *
-     * @return ConstraintViolationListInterface
      */
     public function getErrors(): ConstraintViolationListInterface;
 
     /**
      * Check if there is an error on resource list or children.
-     *
-     * @return bool
      */
     public function hasErrors(): bool;
 }

@@ -77,9 +77,6 @@ class Bar implements SoftDeletableInterface
         $this->description = $description;
     }
 
-    /**
-     * @return null|string
-     */
     public function getDescription(): ?string
     {
         return $this->description;

@@ -205,8 +205,7 @@ final class FormHandlerTest extends AbstractFormHandlerTest
     }
 
     /**
-     * @param array           $objects
-     * @param InvocationOrder $count
+     * @param array $objects
      *
      * @return FormConfigListInterface|MockObject
      */

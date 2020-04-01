@@ -42,8 +42,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreateWithErrorValidation(bool $wrapped): void
     {
@@ -56,8 +54,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreateWithErrorDatabase(bool $wrapped): void
     {
@@ -71,8 +67,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -117,8 +111,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreatesWithErrorValidation(bool $wrapped): void
     {
@@ -133,8 +125,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreatesWithErrorDatabase(bool $wrapped): void
     {
@@ -151,8 +141,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreates(bool $wrapped): void
     {
@@ -161,8 +149,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreatesAutoCommit(bool $wrapped): void
     {
@@ -171,8 +157,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreatesAutoCommitWithErrorValidationAndErrorDatabase(bool $wrapped): void
     {
@@ -222,8 +206,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -282,8 +264,6 @@ final class DomainCreateTest extends AbstractDomainTest
     /**
      * @dataProvider getWrappedData
      *
-     * @param bool $wrapped
-     *
      * @throws
      */
     public function testCreatesAutoCommitWithErrorValidationAndSuccess(bool $wrapped): void
@@ -315,8 +295,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testInvalidObjectType(bool $wrapped): void
     {
@@ -332,8 +310,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testErrorIdentifier(bool $wrapped): void
     {
@@ -348,8 +324,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testCreateAutoCommitErrorOnPrePersistAndSuccessObjectsWithViolationException(bool $wrapped): void
     {
@@ -385,8 +359,6 @@ final class DomainCreateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      *
      * @throws
      */

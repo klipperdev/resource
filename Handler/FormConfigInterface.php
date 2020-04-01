@@ -31,8 +31,6 @@ interface FormConfigInterface
 
     /**
      * Get the class name of form type.
-     *
-     * @return string
      */
     public function getType(): string;
 
@@ -47,8 +45,6 @@ interface FormConfigInterface
      * Get the form options.
      *
      * @param null|object $object The object instance to retrieve the specified options for the object
-     *
-     * @return array
      */
     public function getOptions($object = null): array;
 
@@ -61,8 +57,6 @@ interface FormConfigInterface
 
     /**
      * Get the request method.
-     *
-     * @return string
      */
     public function getMethod(): string;
 
@@ -75,8 +69,6 @@ interface FormConfigInterface
 
     /**
      * Get the submit clear missing option.
-     *
-     * @return bool
      */
     public function getSubmitClearMissing(): bool;
 
@@ -89,8 +81,6 @@ interface FormConfigInterface
 
     /**
      * Get the data converter for the request content.
-     *
-     * @return string
      */
     public function getConverter(): string;
 

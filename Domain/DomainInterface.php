@@ -28,15 +28,11 @@ interface DomainInterface
 {
     /**
      * Get the doctrine object registry.
-     *
-     * @return ObjectManager
      */
     public function getObjectManager(): ObjectManager;
 
     /**
      * Get the class name for this resource domain.
-     *
-     * @return string
      */
     public function getClass(): string;
 
@@ -52,8 +48,6 @@ interface DomainInterface
      *
      * @param string      $alias   The alias of class in query
      * @param null|string $indexBy The index for the from
-     *
-     * @return QueryBuilder
      */
     public function createQueryBuilder($alias = 'o', ?string $indexBy = null): QueryBuilder;
 
@@ -70,8 +64,6 @@ interface DomainInterface
      * Create a resource.
      *
      * @param FormInterface|object|WrapperInterface $resource The object resource instance of defined class name
-     *
-     * @return ResourceInterface
      */
     public function create($resource): ResourceInterface;
 
@@ -83,8 +75,6 @@ interface DomainInterface
      * @param FormInterface[]|object[]|WrapperInterface[] $resources  The list of object resource instance
      * @param bool                                        $autoCommit Commit transaction for each resource or all
      *                                                                (continue the action even if there is an error on a resource)
-     *
-     * @return ResourceListInterface
      */
     public function creates(array $resources, bool $autoCommit = false): ResourceListInterface;
 
@@ -92,8 +82,6 @@ interface DomainInterface
      * Update a resource.
      *
      * @param FormInterface|object|WrapperInterface $resource The object resource
-     *
-     * @return ResourceInterface
      */
     public function update($resource): ResourceInterface;
 
@@ -105,8 +93,6 @@ interface DomainInterface
      * @param FormInterface[]|object[]|WrapperInterface[] $resources  The list of object resource instance
      * @param bool                                        $autoCommit Commit transaction for each resource or all
      *                                                                (continue the action even if there is an error on a resource)
-     *
-     * @return ResourceListInterface
      */
     public function updates(array $resources, bool $autoCommit = false): ResourceListInterface;
 
@@ -114,8 +100,6 @@ interface DomainInterface
      * Update or insert a resource.
      *
      * @param FormInterface|object|WrapperInterface $resource The object resource
-     *
-     * @return ResourceInterface
      */
     public function upsert($resource): ResourceInterface;
 
@@ -127,8 +111,6 @@ interface DomainInterface
      * @param FormInterface[]|object[]|WrapperInterface[] $resources  The list of object resource instance
      * @param bool                                        $autoCommit Commit transaction for each resource or all
      *                                                                (continue the action even if there is an error on a resource)
-     *
-     * @return ResourceListInterface
      */
     public function upserts(array $resources, bool $autoCommit = false): ResourceListInterface;
 
@@ -137,8 +119,6 @@ interface DomainInterface
      *
      * @param object $resource The object resource
      * @param bool   $soft     Check if the delete must be hard or soft for the objects compatibles
-     *
-     * @return ResourceInterface
      */
     public function delete($resource, bool $soft = true): ResourceInterface;
 
@@ -151,8 +131,6 @@ interface DomainInterface
      * @param bool     $soft       Check if the delete must be hard or soft for the objects compatibles
      * @param bool     $autoCommit Commit transaction for each resource or all
      *                             (continue the action even if there is an error on a resource)
-     *
-     * @return ResourceListInterface
      */
     public function deletes(array $resources, bool $soft = true, bool $autoCommit = false): ResourceListInterface;
 
@@ -160,8 +138,6 @@ interface DomainInterface
      * Undelete a resource.
      *
      * @param int|object|string $identifier The object or object identifier
-     *
-     * @return ResourceInterface
      */
     public function undelete($identifier): ResourceInterface;
 
@@ -173,8 +149,6 @@ interface DomainInterface
      * @param int[]|object[]|string[] $identifiers The list of objects or object identifiers
      * @param bool                    $autoCommit  Commit transaction for each resource or all
      *                                             (continue the action even if there is an error on a resource)
-     *
-     * @return ResourceListInterface
      */
     public function undeletes(array $identifiers, bool $autoCommit = false): ResourceListInterface;
 }

@@ -40,8 +40,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdateWithErrorValidation(bool $wrapped): void
     {
@@ -54,8 +52,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdateWithErrorDatabase(bool $wrapped): void
     {
@@ -68,8 +64,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdate(bool $wrapped): void
     {
@@ -109,8 +103,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdatesWithErrorValidation(bool $wrapped): void
     {
@@ -126,8 +118,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdatesWithErrorDatabase(bool $wrapped): void
     {
@@ -143,8 +133,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdates(bool $wrapped): void
     {
@@ -153,8 +141,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdatesAutoCommitWithErrorValidationAndErrorDatabase(bool $wrapped): void
     {
@@ -199,8 +185,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpsertsAutoCommitWithErrorDatabase(bool $wrapped): void
     {
@@ -251,8 +235,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdatesAutoCommitWithErrorValidationAndSuccess(bool $wrapped): void
     {
@@ -277,8 +259,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testUpdatesAutoCommit(bool $wrapped): void
     {
@@ -310,8 +290,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testInvalidObjectType(bool $wrapped): void
     {
@@ -327,8 +305,6 @@ final class DomainUpdateTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      *
      * @throws
      */

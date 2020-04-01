@@ -45,8 +45,6 @@ abstract class ResourceEvent extends Event
 
     /**
      * Get the class name of resources.
-     *
-     * @return string
      */
     public function getClass(): string
     {
@@ -55,8 +53,6 @@ abstract class ResourceEvent extends Event
 
     /**
      * Get the list of resource instances.
-     *
-     * @return ResourceListInterface
      */
     public function getResources(): ResourceListInterface
     {
@@ -67,8 +63,6 @@ abstract class ResourceEvent extends Event
      * Check if the the event resource is the specified class.
      *
      * @param string $class The class name
-     *
-     * @return bool
      */
     public function is(string $class): bool
     {

@@ -481,7 +481,6 @@ final class DomainCreateFormTest extends AbstractDomainTest
 
     /**
      * @param object $object
-     * @param array  $data
      *
      * @return FormInterface
      */

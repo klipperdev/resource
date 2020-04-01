@@ -24,8 +24,6 @@ interface DomainManagerInterface
      * Check if the class is managed.
      *
      * @param string $class The class name or the Doctrine resolved target
-     *
-     * @return bool
      */
     public function has(string $class): bool;
 
@@ -35,8 +33,6 @@ interface DomainManagerInterface
      * @param string $class The class name
      *
      * @throws InvalidArgumentException When the class of resource domain is not managed
-     *
-     * @return DomainInterface
      */
     public function get(string $class): DomainInterface;
 }

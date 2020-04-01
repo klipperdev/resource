@@ -24,8 +24,6 @@ interface DomainFactoryInterface
      * Add the resolve targets.
      *
      * @param array $resolveTargets The resolve targets
-     *
-     * @return DomainFactoryInterface
      */
     public function addResolveTargets(array $resolveTargets): DomainFactoryInterface;
 
@@ -33,19 +31,13 @@ interface DomainFactoryInterface
      * Check if the class is managed by doctrine.
      *
      * @param string $class The class name
-     *
-     * @return bool
      */
     public function isManagedClass(string $class): bool;
 
     /**
      * Get the managed class name defined in doctrine.
      *
-     * @param string $class
-     *
      * @throws InvalidArgumentException When the class is not registered in doctrine
-     *
-     * @return string
      */
     public function getManagedClass(string $class): string;
 
@@ -55,8 +47,6 @@ interface DomainFactoryInterface
      * @param string $class The class name
      *
      * @throws InvalidArgumentException When the class is not registered in doctrine
-     *
-     * @return DomainInterface
      */
     public function create(string $class): DomainInterface;
 }

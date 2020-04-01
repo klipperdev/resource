@@ -51,9 +51,6 @@ final class DomainUpsertTest extends AbstractDomainTest
     /**
      * @dataProvider getUpsertType
      *
-     * @param bool $isUpdate
-     * @param bool $wrapped
-     *
      * @throws
      */
     public function testUpsertWithErrorValidation(bool $isUpdate, bool $wrapped): void
@@ -74,9 +71,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -99,9 +93,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -154,9 +145,6 @@ final class DomainUpsertTest extends AbstractDomainTest
     /**
      * @dataProvider getUpsertType
      *
-     * @param bool $isUpdate
-     * @param bool $wrapped
-     *
      * @throws
      */
     public function testUpsertsWithErrorValidation(bool $isUpdate, bool $wrapped): void
@@ -183,9 +171,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -216,9 +201,6 @@ final class DomainUpsertTest extends AbstractDomainTest
     /**
      * @dataProvider getUpsertType
      *
-     * @param bool $isUpdate
-     * @param bool $wrapped
-     *
      * @throws
      */
     public function testUpserts(bool $isUpdate, bool $wrapped): void
@@ -228,9 +210,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -289,9 +268,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -358,9 +334,6 @@ final class DomainUpsertTest extends AbstractDomainTest
     /**
      * @dataProvider getUpsertType
      *
-     * @param bool $isUpdate
-     * @param bool $wrapped
-     *
      * @throws
      */
     public function testUpsertsAutoCommitWithErrorValidationAndSuccess(bool $isUpdate, bool $wrapped): void
@@ -400,9 +373,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */
@@ -453,8 +423,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getWrappedData
-     *
-     * @param bool $wrapped
      */
     public function testInvalidObjectType(bool $wrapped): void
     {
@@ -470,9 +438,6 @@ final class DomainUpsertTest extends AbstractDomainTest
 
     /**
      * @dataProvider getUpsertType
-     *
-     * @param bool $isUpdate
-     * @param bool $wrapped
      *
      * @throws
      */

@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints\GroupSequence;
 class ValidationWrapper extends Wrapper implements ValidationWrapperInterface
 {
     /**
-     * @var string[]|string[][]|GroupSequence[]
+     * @var GroupSequence[]|string[]|string[][]
      */
     protected $validationGroups;
 
@@ -29,7 +29,7 @@ class ValidationWrapper extends Wrapper implements ValidationWrapperInterface
      * Constructor.
      *
      * @param mixed                               $data             The wrapped data
-     * @param string[]|string[][]|GroupSequence[] $validationGroups The validation groups
+     * @param GroupSequence[]|string[]|string[][] $validationGroups The validation groups
      */
     public function __construct($data, array $validationGroups)
     {

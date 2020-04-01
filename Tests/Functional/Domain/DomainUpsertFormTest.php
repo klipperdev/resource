@@ -690,7 +690,6 @@ final class DomainUpsertFormTest extends AbstractDomainTest
 
     /**
      * @param object $object
-     * @param array  $data
      *
      * @return FormInterface
      */

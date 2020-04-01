@@ -143,8 +143,6 @@ class DomainFactory implements DomainFactoryInterface
      * Find the class name by the the class name or the Doctrine resolved target.
      *
      * @param string $class The class name
-     *
-     * @return string
      */
     protected function findClassName(string $class): string
     {

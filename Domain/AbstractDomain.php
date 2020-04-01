@@ -235,8 +235,6 @@ abstract class AbstractDomain implements DomainInterface
      * Dispatch the event.
      *
      * @param ResourceEvent $event The event
-     *
-     * @return ResourceEvent
      */
     protected function dispatchEvent(ResourceEvent $event): ResourceEvent
     {
@@ -278,8 +276,6 @@ abstract class AbstractDomain implements DomainInterface
      *                                                 (continue the action even if there is an error on a resource)
      * @param int                      $type           The type of persist action
      * @param ResourceInterface[]      $errorResources The error resources
-     *
-     * @return ResourceList
      */
     abstract protected function persist(array $resources, bool $autoCommit, int $type, array $errorResources = []): ResourceList;
 }

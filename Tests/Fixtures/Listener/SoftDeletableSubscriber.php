@@ -58,8 +58,6 @@ class SoftDeletableSubscriber implements EventSubscriber
      * If it's a SoftDeletable object, update the "deletedAt" field
      * and skip the removal of the object.
      *
-     * @param OnFlushEventArgs $args
-     *
      * @throws
      */
     public function onFlush(OnFlushEventArgs $args): void

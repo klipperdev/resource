@@ -84,8 +84,6 @@ class DomainFormConfigList extends FormConfigList
     /**
      * Set the default value options.
      *
-     * @param array $options
-     *
      * @return static
      */
     public function setDefaultValueOptions(array $options): self
@@ -97,8 +95,6 @@ class DomainFormConfigList extends FormConfigList
 
     /**
      * Set the creation.
-     *
-     * @param bool $isCreation
      *
      * @return static
      */
@@ -162,8 +158,6 @@ class DomainFormConfigList extends FormConfigList
      * Find the objects.
      *
      * @param int[] $ids The record ids
-     *
-     * @return array
      */
     protected function findObjects(array $ids): array
     {

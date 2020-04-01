@@ -32,8 +32,6 @@ interface ResourceInterface
 
     /**
      * Get the status of action by the resource domain.
-     *
-     * @return string
      */
     public function getStatus(): string;
 
@@ -53,8 +51,6 @@ interface ResourceInterface
 
     /**
      * Get the list of errors.
-     *
-     * @return ConstraintViolationListInterface
      */
     public function getErrors(): ConstraintViolationListInterface;
 
@@ -62,22 +58,16 @@ interface ResourceInterface
      * Get the form errors.
      *
      * @throws InvalidArgumentException When the data is not a form
-     *
-     * @return FormErrorIterator
      */
     public function getFormErrors(): FormErrorIterator;
 
     /**
      * Check if the resource is a resource for a form.
-     *
-     * @return bool
      */
     public function isForm(): bool;
 
     /**
      * Check if the resource has errors.
-     *
-     * @return bool
      */
     public function isValid(): bool;
 }

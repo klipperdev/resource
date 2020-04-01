@@ -45,8 +45,6 @@ class ConstraintViolationException extends RuntimeException
 
     /**
      * Get the constraint violations.
-     *
-     * @return ConstraintViolationListInterface
      */
     public function getConstraintViolations(): ConstraintViolationListInterface
     {

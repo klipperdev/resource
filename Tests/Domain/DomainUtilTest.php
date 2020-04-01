@@ -312,8 +312,6 @@ final class DomainUtilTest extends TestCase
 
     /**
      * @throws
-     *
-     * @return Translator
      */
     protected function getTranslator(): Translator
     {

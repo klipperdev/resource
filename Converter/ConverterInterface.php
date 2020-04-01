@@ -22,19 +22,13 @@ interface ConverterInterface
 {
     /**
      * Get the name of the conversion.
-     *
-     * @return string
      */
     public function getName(): string;
 
     /**
      * Convert the string content to array.
      *
-     * @param string $content
-     *
      * @throws InvalidConverterException When the data can not be converted
-     *
-     * @return array
      */
     public function convert(string $content): array;
 }

@@ -162,8 +162,6 @@ abstract class AbstractDomainTest extends TestCase
     /**
      * Insert object in database.
      *
-     * @param DomainInterface $domain
-     *
      * @return Foo
      */
     protected function insertResource(DomainInterface $domain)
@@ -174,8 +172,7 @@ abstract class AbstractDomainTest extends TestCase
     /**
      * Insert objects in database.
      *
-     * @param DomainInterface $domain
-     * @param int             $size
+     * @param int $size
      *
      * @return Bar[]|Foo[]
      */

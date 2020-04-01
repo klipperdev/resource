@@ -91,13 +91,6 @@ class ResourceList extends AbstractResourceList
 
     /**
      * Get the final status value.
-     *
-     * @param int $countPending
-     * @param int $countCancel
-     * @param int $countError
-     * @param int $countSuccess
-     *
-     * @return string
      */
     private function getStatusValue(int $countPending, int $countCancel, int $countError, int $countSuccess): string
     {

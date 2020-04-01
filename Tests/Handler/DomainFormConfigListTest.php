@@ -156,7 +156,6 @@ final class DomainFormConfigListTest extends TestCase
     /**
      * @dataProvider getOptionsData
      *
-     * @param string          $expected
      * @param null|int|string $id
      */
     public function testGetOptions(string $expected, $id): void

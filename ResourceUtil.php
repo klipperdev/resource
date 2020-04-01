@@ -31,8 +31,6 @@ abstract class ResourceUtil
      * @param bool                     $allowForm    Check if the form is allowed
      *
      * @throws InvalidResourceException When the instance object in the list is not an instance of the required class
-     *
-     * @return ResourceList
      */
     public static function convertObjectsToResourceList(array $objects, string $requireClass, bool $allowForm = true): ResourceList
     {

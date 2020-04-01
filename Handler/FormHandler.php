@@ -128,8 +128,6 @@ class FormHandler implements FormHandlerInterface
      *
      * @param FormConfigInterface $config  The form config
      * @param array[]|object[]    $objects The list of object instance
-     *
-     * @return array
      */
     protected function getDataListObjects(FormConfigInterface $config, array $objects): array
     {
@@ -158,8 +156,6 @@ class FormHandler implements FormHandlerInterface
      * Get the form data list.
      *
      * @param FormConfigInterface $config The form config
-     *
-     * @return array
      */
     protected function getDataList(FormConfigInterface $config): array
     {
@@ -199,8 +195,6 @@ class FormHandler implements FormHandlerInterface
      * Validate the limit with a integer greater than 1.
      *
      * @param null|int $limit The limit
-     *
-     * @return null|int
      */
     protected function validateLimit(?int $limit): ?int
     {

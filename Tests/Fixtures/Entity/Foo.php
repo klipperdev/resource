@@ -70,9 +70,6 @@ class Foo
         $this->description = $description;
     }
 
-    /**
-     * @return null|string
-     */
     public function getDescription(): ?string
     {
         return $this->description;

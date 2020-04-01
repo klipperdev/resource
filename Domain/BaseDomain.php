@@ -73,10 +73,6 @@ abstract class BaseDomain extends AbstractDomain
     /**
      * Finalize the action for a resource.
      *
-     * @param ResourceInterface $resource
-     * @param string            $status
-     * @param bool              $hasError
-     *
      * @return bool Returns the new hasError value
      */
     protected function finalizeResourceStatus(ResourceInterface $resource, string $status, bool $hasError): bool
@@ -108,8 +104,6 @@ abstract class BaseDomain extends AbstractDomain
      * Flush data in database with automatic declaration of the transaction for the collection.
      *
      * @param null|object $object The resource for auto commit or null for flush at the end
-     *
-     * @return ConstraintViolationList
      */
     protected function flushTransaction($object = null): ConstraintViolationList
     {
@@ -200,8 +194,6 @@ abstract class BaseDomain extends AbstractDomain
      *
      * @param object $object The object data
      * @param int    $type   The type of persist
-     *
-     * @return null|string
      */
     protected function getErrorIdentifier($object, int $type): ?string
     {
@@ -226,8 +218,6 @@ abstract class BaseDomain extends AbstractDomain
      *
      * @param int    $type   The type of persist
      * @param object $object The resource instance
-     *
-     * @return string
      */
     protected function getSuccessStatus(int $type, $object): string
     {
