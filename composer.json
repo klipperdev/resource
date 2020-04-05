@@ -24,7 +24,8 @@
         "doctrine/persistence": "^1.0.0",
         "doctrine/orm": "^2.6.0",
         "klipper/doctrine-extra": "^2.0.0",
-        "klipper/doctrine-extensions": "^2.0.0"
+        "klipper/doctrine-extensions": "^2.0.0",
+        "klipper/model-contracts": "^2.0.0"
     },
     "require-dev": {
         "doctrine/event-manager": "^1.0.0",

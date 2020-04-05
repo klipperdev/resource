@@ -16,22 +16,6 @@ namespace Klipper\Component\Resource\Model;
  *
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-interface SoftDeletableInterface
+interface SoftDeletableInterface extends \Klipper\Contracts\Model\SoftDeletableInterface
 {
-    /**
-     * Set deleted at.
-     *
-     * @return static
-     */
-    public function setDeletedAt(?\DateTime $deletedAt = null);
-
-    /**
-     * Get deleted at.
-     */
-    public function getDeletedAt(): ?\DateTime;
-
-    /**
-     * Check if the resource is deleted.
-     */
-    public function isDeleted(): bool;
 }
