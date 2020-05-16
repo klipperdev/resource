@@ -17,7 +17,7 @@ use Klipper\Component\Resource\Handler\FormConfigListInterface;
 use Klipper\Component\Resource\Tests\Fixtures\Entity\Foo;
 use Klipper\Component\Resource\Tests\Fixtures\Form\FooType;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
+use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -209,7 +209,7 @@ final class FormHandlerTest extends AbstractFormHandlerTest
      *
      * @return FormConfigListInterface|MockObject
      */
-    protected function createFormConfigList($objects, InvocationOrder $count)
+    protected function createFormConfigList($objects, InvokedRecorder $count)
     {
         $config = $this->getMockBuilder(FormConfigList::class)
             ->setConstructorArgs([FooType::class, [], Request::METHOD_POST, 'json'])
