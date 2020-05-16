@@ -16,8 +16,8 @@ use Klipper\Component\Resource\Handler\FormConfigList;
 use Klipper\Component\Resource\Handler\FormConfigListInterface;
 use Klipper\Component\Resource\Tests\Fixtures\Entity\Foo;
 use Klipper\Component\Resource\Tests\Fixtures\Form\FooType;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
