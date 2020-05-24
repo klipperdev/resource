@@ -11,11 +11,11 @@
 
 namespace Klipper\Component\Resource\Tests\Domain;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata as OrmClassMetadata;
+use Doctrine\Persistence\ManagerRegistry;
 use Klipper\Component\Resource\Domain\Domain;
 use Klipper\Component\Resource\Domain\DomainFactory;
 use Klipper\Component\Resource\Object\ObjectFactoryInterface;

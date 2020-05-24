@@ -11,7 +11,7 @@
 
 namespace Klipper\Component\Resource\Domain;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Klipper\Component\DoctrineExtra\Util\ManagerUtils;
 use Klipper\Component\Resource\Object\ObjectFactoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
