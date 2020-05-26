@@ -101,7 +101,7 @@ class Bar implements SoftDeletableInterface
     /**
      * {@inheritdoc}
      */
-    public function setDeletedAt(?\DateTime $deletedAt = null): SoftDeletableInterface
+    public function setDeletedAt(?\DateTimeInterface $deletedAt = null): SoftDeletableInterface
     {
         $this->deletedAt = $deletedAt;
 
@@ -111,7 +111,7 @@ class Bar implements SoftDeletableInterface
     /**
      * {@inheritdoc}
      */
-    public function getDeletedAt(): ?\DateTime
+    public function getDeletedAt(): ?\DateTimeInterface
     {
         return $this->deletedAt;
     }
