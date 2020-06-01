@@ -38,7 +38,7 @@ class ConstraintViolationException extends RuntimeException
         int $code = 0,
         ?\Exception $previous = null
     ) {
-        parent::__construct($message ?? Response::$statusTexts[422], $code, $previous);
+        parent::__construct($message ?? Response::$statusTexts[400], $code, $previous);
 
         $this->violations = $violations;
     }
