@@ -34,10 +34,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 final class DomainFactoryTest extends TestCase
 {
-    /**
-     * @var DomainFactory
-     */
-    protected $factory;
+    protected ?DomainFactory $factory = null;
 
     /**
      * @var MockObject|ObjectManager

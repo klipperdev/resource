@@ -21,19 +21,11 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 abstract class ResourceEvent extends Event
 {
-    /**
-     * @var string
-     */
-    private $class;
+    private string $class;
+
+    private ResourceListInterface $resources;
 
     /**
-     * @var ResourceListInterface
-     */
-    private $resources;
-
-    /**
-     * Constructor.
-     *
      * @param string                $class     The class name of resources
      * @param ResourceListInterface $resources The list of resource instances
      */

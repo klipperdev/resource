@@ -11,8 +11,8 @@
 
 namespace Klipper\Component\Resource\Domain;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\DBAL\Exception\DriverException;
+use Doctrine\Persistence\ObjectManager;
 use Klipper\Component\DoctrineExtra\Util\ClassUtils;
 use Klipper\Component\Resource\Event\PostCreatesEvent;
 use Klipper\Component\Resource\Event\PostDeletesEvent;
@@ -49,7 +49,7 @@ abstract class DomainUtil
      *
      * @return null|int|string
      */
-    public static function getIdentifier(ObjectManager $om, $object)
+    public static function getIdentifier(ObjectManager $om, object $object)
     {
         $propertyAccess = PropertyAccess::createPropertyAccessor();
         $meta = $om->getClassMetadata(ClassUtils::getClass($object));
@@ -186,18 +186,18 @@ abstract class DomainUtil
     }
 
     /**
-     * Get the exception message.
+     * Get the throwable message.
      *
      * @param TranslatorInterface $translator The translator
-     * @param \Exception          $exception  The exception
+     * @param \Throwable          $exception  The exception
      * @param bool                $debug      The debug mode
      */
-    public static function getExceptionMessage(TranslatorInterface $translator, \Exception $exception, bool $debug = false): string
+    public static function getThrowableMessage(TranslatorInterface $translator, \Throwable $exception, bool $debug = false): string
     {
         if ($exception instanceof DriverException) {
             $message = static::getDatabaseErrorMessage($translator, $exception, $debug);
 
-            return static::extractDriverExceptionMessage($exception, $message, $debug);
+            return static::extractDriverThrowableMessage($exception, $message, $debug);
         }
 
         if ($translator instanceof TranslatorBagInterface
@@ -215,9 +215,9 @@ abstract class DomainUtil
      *
      * @param ResourceInterface $resource The resource
      * @param string            $message  The error message
-     * @param null|\Exception   $e        The exception
+     * @param null|\Throwable   $e        The exception
      */
-    public static function addResourceError(ResourceInterface $resource, string $message, ?\Exception $e = null): void
+    public static function addResourceError(ResourceInterface $resource, string $message, ?\Throwable $e = null): void
     {
         $resource->setStatus(ResourceStatutes::ERROR);
         $resource->getErrors()->add(new ConstraintViolation($message, $message, [], $resource->getRealData(), null, null, null, null, null, $e));
@@ -228,16 +228,16 @@ abstract class DomainUtil
      *
      * @param TranslatorInterface $translator The translator
      * @param ResourceInterface   $resource   The resource
-     * @param \Exception          $e          The exception on persist action
+     * @param \Throwable          $e          The exception on persist action
      * @param bool                $debug      The debug mode
      */
-    public static function injectErrorMessage(TranslatorInterface $translator, ResourceInterface $resource, \Exception $e, bool $debug = false): bool
+    public static function injectErrorMessage(TranslatorInterface $translator, ResourceInterface $resource, \Throwable $e, bool $debug = false): bool
     {
         if ($e instanceof ConstraintViolationException) {
             $resource->setStatus(ResourceStatutes::ERROR);
             $resource->getErrors()->addAll($e->getConstraintViolations());
         } else {
-            static::addResourceError($resource, static::getExceptionMessage($translator, $e, $debug), $e);
+            static::addResourceError($resource, static::getThrowableMessage($translator, $e, $debug), $e);
         }
 
         return true;
@@ -273,10 +273,10 @@ abstract class DomainUtil
      * @param string          $message   The message
      * @param bool            $debug     The debug mode
      */
-    protected static function extractDriverExceptionMessage(DriverException $exception, string $message, bool $debug = false): string
+    protected static function extractDriverThrowableMessage(DriverException $exception, string $message, bool $debug = false): string
     {
         if ($debug && null !== $exception->getPrevious()) {
-            $prevMessage = static::getFirstException($exception)->getMessage();
+            $prevMessage = static::getFirstThrowable($exception)->getMessage();
             $pos = strpos($prevMessage, ':');
 
             if ($pos > 0 && 0 === strpos($prevMessage, 'SQLSTATE[')) {
@@ -290,10 +290,10 @@ abstract class DomainUtil
     /**
      * Get the initial exception.
      */
-    protected static function getFirstException(\Exception $exception): \Exception
+    protected static function getFirstThrowable(\Throwable $exception): \Throwable
     {
         if (null !== $exception->getPrevious()) {
-            return static::getFirstException($exception->getPrevious());
+            return static::getFirstThrowable($exception->getPrevious());
         }
 
         return $exception;
@@ -303,10 +303,10 @@ abstract class DomainUtil
      * Get the translated message for the error database.
      *
      * @param TranslatorInterface $translator The translator
-     * @param \Exception          $exception  The exception
+     * @param \Throwable          $exception  The exception
      * @param bool                $debug      The debug mode
      */
-    protected static function getDatabaseErrorMessage(TranslatorInterface $translator, \Exception $exception, bool $debug = false): string
+    protected static function getDatabaseErrorMessage(TranslatorInterface $translator, \Throwable $exception, bool $debug = false): string
     {
         $message = $translator->trans('domain.database_error', [], 'KlipperResource');
 

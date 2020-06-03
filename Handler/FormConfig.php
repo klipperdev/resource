@@ -20,39 +20,22 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FormConfig implements FormConfigInterface
 {
-    /**
-     * @var string
-     */
-    protected $type;
+    protected string $type;
 
-    /**
-     * @var array
-     */
-    protected $options;
+    protected array $options;
 
-    /**
-     * @var string
-     */
-    protected $method;
+    protected string $method;
 
-    /**
-     * @var null|bool
-     */
-    protected $clearMissing;
+    protected ?bool $clearMissing = null;
 
-    /**
-     * @var string
-     */
-    protected $converter;
+    protected string $converter;
 
     /**
      * @var callable[]
      */
-    protected $builderHandlers = [];
+    protected array $builderHandlers = [];
 
     /**
-     * Constructor.
-     *
      * @param string $type      The class name of form type
      * @param array  $options   The form options for create the form type
      * @param string $method    The request method
@@ -70,25 +53,16 @@ class FormConfig implements FormConfigInterface
         $this->setConverter($converter);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setOptions(array $options): void
     {
         if (isset($options['method'])) {
@@ -99,41 +73,29 @@ class FormConfig implements FormConfigInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param null|mixed $object
      */
     public function getOptions($object = null): array
     {
         return $this->options;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setMethod(string $method): void
     {
         $this->method = $method;
         $this->options['method'] = $method;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): string
     {
         return $this->method;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSubmitClearMissing(?bool $clearMissing): void
     {
         $this->clearMissing = $clearMissing;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSubmitClearMissing(): bool
     {
         if (null === $this->clearMissing) {
@@ -143,33 +105,21 @@ class FormConfig implements FormConfigInterface
         return (bool) $this->clearMissing;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConverter(): string
     {
         return $this->converter;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setConverter(string $converter): void
     {
         $this->converter = $converter;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBuilderHandlers(): array
     {
         return $this->builderHandlers;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addBuilderHandler(?callable $builderHandler): self
     {
         $this->builderHandlers[] = $builderHandler;

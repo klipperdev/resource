@@ -20,14 +20,9 @@ use Klipper\Component\DefaultValue\ObjectFactoryInterface as DefaultValueObjectF
  */
 class DefaultValueObjectFactory implements ObjectFactoryInterface
 {
-    /**
-     * @var DefaultValueObjectFactoryInterface
-     */
-    private $of;
+    private DefaultValueObjectFactoryInterface $of;
 
     /**
-     * Constructor.
-     *
      * @param DefaultValueObjectFactoryInterface $of The default value object factory
      */
     public function __construct(DefaultValueObjectFactoryInterface $of)
@@ -35,9 +30,6 @@ class DefaultValueObjectFactory implements ObjectFactoryInterface
         $this->of = $of;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(string $classname, array $options = [])
     {
         return $this->of->create($classname, null, $options);

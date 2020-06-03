@@ -36,10 +36,7 @@ final class DomainManagerTest extends TestCase
      */
     protected $domain;
 
-    /**
-     * @var DomainManager
-     */
-    protected $manager;
+    protected ?DomainManager $manager = null;
 
     protected function setUp(): void
     {

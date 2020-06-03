@@ -19,13 +19,11 @@ namespace Klipper\Component\Resource\Exception;
 class InvalidXmlConverterException extends InvalidConverterException
 {
     /**
-     * Constructor.
-     *
      * @param string     $message  The exception message
      * @param int        $code     The exception code
-     * @param \Exception $previous The previous exception
+     * @param \Throwable $previous The previous exception
      */
-    public function __construct(string $message = 'Body should be a XML object', int $code = 0, ?\Exception $previous = null)
+    public function __construct(string $message = 'Body should be a XML object', int $code = 0, ?\Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }

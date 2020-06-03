@@ -24,11 +24,9 @@ class ConverterRegistry implements ConverterRegistryInterface
     /**
      * @var ConverterInterface[]
      */
-    protected $converters = [];
+    protected array $converters = [];
 
     /**
-     * Constructor.
-     *
      * @param ConverterInterface[] $converters
      *
      * @throws UnexpectedTypeException When the converter is not an instance of "Klipper\Component\Resource\Converter\ConverterInterface"
@@ -43,9 +41,6 @@ class ConverterRegistry implements ConverterRegistryInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(string $name): ConverterInterface
     {
         $sName = strtolower($name);
@@ -57,9 +52,6 @@ class ConverterRegistry implements ConverterRegistryInterface
         throw new InvalidArgumentException(sprintf('Could not load content converter "%s"', $name));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function has(string $name): bool
     {
         return isset($this->converters[strtolower($name)]);

@@ -18,16 +18,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 abstract class AbstractConverter implements ConverterInterface
 {
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
+    protected TranslatorInterface $translator;
 
-    /**
-     * Constructor.
-     *
-     * @param TranslatorInterface $translator The translator
-     */
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;

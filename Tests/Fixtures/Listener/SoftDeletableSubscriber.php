@@ -23,10 +23,7 @@ use Klipper\Component\Resource\Model\SoftDeletableInterface;
  */
 class SoftDeletableSubscriber implements EventSubscriber
 {
-    /**
-     * @var bool
-     */
-    protected $enabled = true;
+    protected bool $enabled = true;
 
     /**
      * Enable the soft deletable.
@@ -44,9 +41,6 @@ class SoftDeletableSubscriber implements EventSubscriber
         $this->enabled = false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSubscribedEvents(): array
     {
         return [

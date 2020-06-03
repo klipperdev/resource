@@ -85,8 +85,6 @@ final class ResourceStatutes
     public const UNDELETED = 'undeleted';
 
     /**
-     * Constructor.
-     *
      * @throws ClassNotInstantiableException
      */
     public function __construct()

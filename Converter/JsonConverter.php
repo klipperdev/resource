@@ -20,22 +20,16 @@ use Klipper\Component\Resource\Exception\InvalidJsonConverterException;
  */
 class JsonConverter extends AbstractConverter
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'json';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convert(string $content): array
     {
-        $value = json_decode($content, true);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
+        try {
+            $value = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
             throw new InvalidJsonConverterException($this->translator->trans('converter.json.invalid_body', [], 'KlipperResource'));
         }
 

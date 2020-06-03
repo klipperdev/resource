@@ -55,7 +55,7 @@ final class DomainUtilTest extends TestCase
         /** @var DriverException|MockObject $ex */
         $ex = $this->getMockBuilder(DriverException::class)->disableOriginalConstructor()->getMock();
 
-        $message = DomainUtil::getExceptionMessage($this->getTranslator(), $ex);
+        $message = DomainUtil::getThrowableMessage($this->getTranslator(), $ex);
 
         static::assertSame('Database error', $message);
     }
@@ -67,7 +67,7 @@ final class DomainUtilTest extends TestCase
         $prevEx = new MockDriverException('Previous exception', 1, $rootEx);
         $ex = new DriverException('Exception message', $prevEx);
 
-        $message = DomainUtil::getExceptionMessage($this->getTranslator(), $ex, true);
+        $message = DomainUtil::getThrowableMessage($this->getTranslator(), $ex, true);
 
         static::assertSame('Database error [Doctrine\DBAL\Exception\DriverException]: General error: 1364 Field \'foo\' doesn\'t have a default value', $message);
     }
@@ -75,7 +75,7 @@ final class DomainUtilTest extends TestCase
     public function testTranslatableExceptionMessage(): void
     {
         $ex = new \Exception('domain.database_previous_error');
-        $message = DomainUtil::getExceptionMessage($this->getTranslator(), $ex);
+        $message = DomainUtil::getThrowableMessage($this->getTranslator(), $ex);
 
         static::assertSame('Caused by previous internal database error', $message);
     }

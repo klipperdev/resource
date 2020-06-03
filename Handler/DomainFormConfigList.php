@@ -24,34 +24,17 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
  */
 class DomainFormConfigList extends FormConfigList
 {
-    /**
-     * @var DomainInterface
-     */
-    protected $domain;
+    protected DomainInterface $domain;
+
+    protected string $identifier = 'id';
+
+    protected array $defaultValueOptions = [];
+
+    protected bool $creation = true;
+
+    private PropertyAccessorInterface $propertyAccessor;
 
     /**
-     * @var string
-     */
-    protected $identifier = 'id';
-
-    /**
-     * @var array
-     */
-    protected $defaultValueOptions = [];
-
-    /**
-     * @var bool
-     */
-    protected $creation = true;
-
-    /**
-     * @var PropertyAccessorInterface
-     */
-    private $propertyAccessor;
-
-    /**
-     * Constructor.
-     *
      * @param DomainInterface $domain    The domain resource
      * @param string          $type      The class name of form type
      * @param array           $options   The form options for create the form type
@@ -106,7 +89,7 @@ class DomainFormConfigList extends FormConfigList
     }
 
     /**
-     * {@inheritdoc}
+     * @param null|mixed $object
      */
     public function getOptions($object = null): array
     {
@@ -128,9 +111,6 @@ class DomainFormConfigList extends FormConfigList
         return $options;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convertObjects(array &$list): array
     {
         if ($this->creation) {

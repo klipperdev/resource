@@ -18,53 +18,29 @@ namespace Klipper\Component\Resource\Tests\Fixtures\Entity;
  */
 class Foo
 {
-    /**
-     * @var int
-     */
-    protected $id;
+    protected ?int $id = null;
 
-    /**
-     * @var string
-     */
-    protected $name;
+    protected ?string $name = null;
 
-    /**
-     * @var null|string
-     */
-    protected $description;
+    protected ?string $description = null;
 
-    /**
-     * @var string
-     */
-    protected $detail;
+    protected ?string $detail = null;
 
-    /**
-     * @return int
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $description
-     */
     public function setDescription(?string $description): void
     {
         $this->description = $description;
@@ -75,17 +51,11 @@ class Foo
         return $this->description;
     }
 
-    /**
-     * @param string $detail
-     */
     public function setDetail(?string $detail): void
     {
         $this->detail = $detail;
     }
 
-    /**
-     * @return string
-     */
     public function getDetail(): ?string
     {
         return $this->detail;

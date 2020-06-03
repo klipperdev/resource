@@ -20,25 +20,16 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 class ResourceList extends AbstractResourceList
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->resources);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getErrors(): ConstraintViolationListInterface
     {
         return $this->errors;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasErrors(): bool
     {
         if ($this->getErrors()->count() > 0) {
@@ -55,9 +46,6 @@ class ResourceList extends AbstractResourceList
         return false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function refreshStatus(): void
     {
         $countPending = 0;

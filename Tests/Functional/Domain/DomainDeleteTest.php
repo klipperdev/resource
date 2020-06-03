@@ -26,7 +26,7 @@ use Klipper\Component\Resource\Tests\Fixtures\Listener\ErrorListener;
  */
 final class DomainDeleteTest extends AbstractDomainTest
 {
-    protected $softClass = Bar::class;
+    protected string $softClass = Bar::class;
 
     public function testSoftDeletableListener(): void
     {

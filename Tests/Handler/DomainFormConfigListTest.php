@@ -36,10 +36,7 @@ final class DomainFormConfigListTest extends TestCase
      */
     protected $domain;
 
-    /**
-     * @var DomainFormConfigList
-     */
-    protected $config;
+    protected ?DomainFormConfigList $config = null;
 
     protected function setUp(): void
     {

@@ -20,27 +20,19 @@ use Klipper\Component\Resource\Exception\InvalidXmlConverterException;
  */
 class XmlConverter extends AbstractConverter
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'xml';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convert(string $content): array
     {
         try {
             $value = new \SimpleXMLElement($content);
             $value = json_encode($value);
-            $value = json_decode($value, true);
-
-            if (JSON_ERROR_NONE !== json_last_error()) {
-                throw new InvalidXmlConverterException();
-            }
+            $value = json_decode($value, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw new InvalidXmlConverterException();
         } catch (\Throwable $e) {
             throw new InvalidXmlConverterException($this->translator->trans('converter.xml.invalid_body', [], 'KlipperResource'));
         }

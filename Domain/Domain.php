@@ -33,10 +33,7 @@ use Symfony\Component\Validator\ConstraintViolation;
  */
 class Domain extends BaseDomain
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function createQueryBuilder($alias = 'o', ?string $indexBy = null): QueryBuilder
+    public function createQueryBuilder(string $alias = 'o', ?string $indexBy = null): QueryBuilder
     {
         if ($this->om instanceof EntityManagerInterface) {
             /** @var EntityRepository $repo */
@@ -48,9 +45,6 @@ class Domain extends BaseDomain
         throw new BadMethodCallException('The "Domain::createQueryBuilder()" method can only be called for a domain with Doctrine ORM Entity Manager');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function deletes(array $resources, bool $soft = true, bool $autoCommit = false): ResourceListInterface
     {
         $list = ResourceUtil::convertObjectsToResourceList(array_values($resources), $this->getClass(), false);
@@ -65,9 +59,6 @@ class Domain extends BaseDomain
         return $list;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function undeletes(array $identifiers, bool $autoCommit = false): ResourceListInterface
     {
         list($objects, $missingIds) = $this->convertIdentifierToObjects($identifiers);
@@ -120,9 +111,6 @@ class Domain extends BaseDomain
         return [$objects, $missingIds];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function persist(array $resources, bool $autoCommit, int $type, array $errorResources = []): ResourceList
     {
         list($preEventClass, $postEventClass) = DomainUtil::getEventClasses($type);
@@ -193,7 +181,7 @@ class Domain extends BaseDomain
             try {
                 $this->om->persist($object);
                 $hasFlushError = $this->doAutoCommitFlushTransaction($resource, $autoCommit);
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 $hasFlushError = DomainUtil::injectErrorMessage($this->translator, $resource, $e, $this->debug);
             }
         }
@@ -207,7 +195,7 @@ class Domain extends BaseDomain
      * @param ResourceInterface $resource The resource
      * @param int               $type     The type of persist action
      */
-    protected function validateUndeleteResource(ResourceInterface $resource, $type): void
+    protected function validateUndeleteResource(ResourceInterface $resource, int $type): void
     {
         if (static::TYPE_UNDELETE === $type) {
             $object = $resource->getRealData();
@@ -323,7 +311,7 @@ class Domain extends BaseDomain
     {
         try {
             $this->om->remove($resource->getRealData());
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             DomainUtil::injectErrorMessage($this->translator, $resource, $e, $this->debug);
         }
     }

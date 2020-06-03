@@ -20,19 +20,10 @@ use Klipper\Component\Resource\Exception\InvalidResourceException;
  */
 abstract class FormConfigList extends FormConfig implements FormConfigListInterface
 {
-    /**
-     * @var null|int
-     */
-    protected $limit;
+    protected ?int $limit = null;
 
-    /**
-     * @var bool
-     */
-    protected $transactional = true;
+    protected bool $transactional = true;
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLimit(?int $limit): FormConfigListInterface
     {
         $this->limit = $limit;
@@ -40,17 +31,11 @@ abstract class FormConfigList extends FormConfig implements FormConfigListInterf
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLimit(): ?int
     {
         return $this->limit;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setTransactional(bool $transactional): FormConfigListInterface
     {
         $this->transactional = $transactional;
@@ -58,17 +43,11 @@ abstract class FormConfigList extends FormConfig implements FormConfigListInterf
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isTransactional(): bool
     {
         return $this->transactional;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findList(array $data): array
     {
         if (!isset($data['records'])) {

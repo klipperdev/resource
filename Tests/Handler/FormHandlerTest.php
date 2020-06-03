@@ -53,20 +53,11 @@ final class FormHandlerTest extends TestCase
      */
     protected $request;
 
-    /**
-     * @var Translator
-     */
-    protected $translator;
+    protected ?Translator $translator = null;
 
-    /**
-     * @var int
-     */
-    protected $defaultLimit;
+    protected ?int $defaultLimit = null;
 
-    /**
-     * @var FormHandlerInterface
-     */
-    protected $formHandler;
+    protected ?FormHandlerInterface $formHandler = null;
 
     protected function setUp(): void
     {
@@ -229,7 +220,7 @@ final class FormHandlerTest extends TestCase
      *
      * @return FormConfigInterface|FormConfigListInterface|MockObject
      */
-    protected function configureProcessForms(array $objects, $configClass, $requestContent, $limit = null)
+    protected function configureProcessForms(array $objects, string $configClass, string $requestContent, ?int $limit = null)
     {
         /** @var FormConfigInterface|FormConfigListInterface|MockObject $config */
         $config = $this->getMockBuilder($configClass)->getMock();

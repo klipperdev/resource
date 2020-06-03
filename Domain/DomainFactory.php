@@ -25,49 +25,23 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class DomainFactory implements DomainFactoryInterface
 {
-    /**
-     * @var ManagerRegistry
-     */
-    protected $or;
+    protected ManagerRegistry $or;
+
+    protected EventDispatcherInterface $ed;
+
+    protected ObjectFactoryInterface $of;
+
+    protected ValidatorInterface $validator;
+
+    protected TranslatorInterface $translator;
+
+    protected array $undeleteDisableFilters;
+
+    protected bool $debug;
+
+    protected array $resolveTargets = [];
 
     /**
-     * @var EventDispatcherInterface
-     */
-    protected $ed;
-
-    /**
-     * @var ObjectFactoryInterface
-     */
-    protected $of;
-
-    /**
-     * @var ValidatorInterface
-     */
-    protected $validator;
-
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
-
-    /**
-     * @var array
-     */
-    protected $undeleteDisableFilters;
-
-    /**
-     * @var bool
-     */
-    protected $debug;
-
-    /**
-     * @var array
-     */
-    protected $resolveTargets;
-
-    /**
-     * Constructor.
-     *
      * @param ManagerRegistry          $or                     The doctrine registry
      * @param EventDispatcherInterface $ed                     The event dispatcher
      * @param ObjectFactoryInterface   $of                     The default value object factory
@@ -92,12 +66,8 @@ class DomainFactory implements DomainFactoryInterface
         $this->translator = $translator;
         $this->undeleteDisableFilters = $undeleteDisableFilters;
         $this->debug = $debug;
-        $this->resolveTargets = [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addResolveTargets(array $resolveTargets): DomainFactoryInterface
     {
         $this->resolveTargets = array_merge($this->resolveTargets, $resolveTargets);
@@ -105,26 +75,17 @@ class DomainFactory implements DomainFactoryInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isManagedClass(string $class): bool
     {
         return null !== ManagerUtils::getManager($this->or, $this->findClassName($class));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getManagedClass(string $class): string
     {
         return ManagerUtils::getRequiredManager($this->or, $this->findClassName($class))
             ->getClassMetadata($class)->getName();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(string $class): DomainInterface
     {
         return new Domain(

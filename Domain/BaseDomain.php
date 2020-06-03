@@ -115,7 +115,7 @@ abstract class BaseDomain extends AbstractDomain
             if (null !== $this->connection && null === $object) {
                 $this->connection->commit();
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->flushTransactionException($e, $violations, $object);
         }
 
@@ -125,13 +125,13 @@ abstract class BaseDomain extends AbstractDomain
     /**
      * Do the action when there is an exception on flush transaction.
      *
-     * @param \Exception                       $e          The exception on flush transaction
+     * @param \Throwable                       $e          The exception on flush transaction
      * @param ConstraintViolationListInterface $violations The constraint violation list
      * @param null|object                      $object     The resource for auto commit or null for flush at the end
      *
      * @throws
      */
-    protected function flushTransactionException(\Exception $e, ConstraintViolationListInterface $violations, $object = null): void
+    protected function flushTransactionException(\Throwable $e, ConstraintViolationListInterface $violations, $object = null): void
     {
         if (null !== $this->connection && null === $object) {
             $this->connection->rollback();
@@ -140,7 +140,7 @@ abstract class BaseDomain extends AbstractDomain
         if ($e instanceof ConstraintViolationException) {
             $violations->addAll($e->getConstraintViolations());
         } else {
-            $message = DomainUtil::getExceptionMessage($this->translator, $e, $this->debug);
+            $message = DomainUtil::getThrowableMessage($this->translator, $e, $this->debug);
 
             $violations->add(new ConstraintViolation($message, $message, [], $object, null, null));
         }
@@ -195,7 +195,7 @@ abstract class BaseDomain extends AbstractDomain
      * @param object $object The object data
      * @param int    $type   The type of persist
      */
-    protected function getErrorIdentifier($object, int $type): ?string
+    protected function getErrorIdentifier(object $object, int $type): ?string
     {
         $idValue = DomainUtil::getIdentifier($this->om, $object);
         $idError = null;
@@ -219,7 +219,7 @@ abstract class BaseDomain extends AbstractDomain
      * @param int    $type   The type of persist
      * @param object $object The resource instance
      */
-    protected function getSuccessStatus(int $type, $object): string
+    protected function getSuccessStatus(int $type, object $object): string
     {
         if (Domain::TYPE_CREATE === $type) {
             return ResourceStatutes::CREATED;

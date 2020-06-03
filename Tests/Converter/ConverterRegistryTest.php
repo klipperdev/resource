@@ -24,10 +24,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class ConverterRegistryTest extends TestCase
 {
-    /**
-     * @var ConverterRegistryInterface
-     */
-    protected $registry;
+    protected ?ConverterRegistryInterface $registry = null;
 
     protected function setUp(): void
     {

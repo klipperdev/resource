@@ -27,10 +27,7 @@ use Symfony\Component\Translation\Translator;
  */
 final class JsonConverterTest extends TestCase
 {
-    /**
-     * @var ConverterInterface
-     */
-    protected $converter;
+    protected ?ConverterInterface $converter = null;
 
     protected function setUp(): void
     {

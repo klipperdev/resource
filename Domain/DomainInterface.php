@@ -11,10 +11,10 @@
 
 namespace Klipper\Component\Resource\Domain;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Klipper\Component\Resource\ResourceInterface;
 use Klipper\Component\Resource\ResourceListInterface;
 use Symfony\Component\Form\FormInterface;
@@ -49,7 +49,7 @@ interface DomainInterface
      * @param string      $alias   The alias of class in query
      * @param null|string $indexBy The index for the from
      */
-    public function createQueryBuilder($alias = 'o', ?string $indexBy = null): QueryBuilder;
+    public function createQueryBuilder(string $alias = 'o', ?string $indexBy = null): QueryBuilder;
 
     /**
      * Generate a new resource instance with default values.

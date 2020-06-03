@@ -27,7 +27,7 @@ use Klipper\Component\Resource\Tests\Fixtures\Filter\SoftDeletableFilter;
  */
 final class DomainUndeleteTest extends AbstractDomainTest
 {
-    protected $softClass = Bar::class;
+    protected string $softClass = Bar::class;
 
     public function getAutoCommits()
     {

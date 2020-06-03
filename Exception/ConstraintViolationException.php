@@ -21,22 +21,19 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 class ConstraintViolationException extends RuntimeException
 {
-    /**
-     * @var ConstraintViolationListInterface
-     */
-    protected $violations;
+    protected ConstraintViolationListInterface $violations;
 
     /**
      * @param ConstraintViolationListInterface $violations The constraint violations
      * @param string                           $message    The message of exception
      * @param int                              $code       The code of exception
-     * @param \Exception                       $previous   The previous exception
+     * @param \Throwable                       $previous   The previous exception
      */
     public function __construct(
         ConstraintViolationListInterface $violations,
         ?string $message = null,
         int $code = 0,
-        ?\Exception $previous = null
+        ?\Throwable $previous = null
     ) {
         parent::__construct($message ?? Response::$statusTexts[400], $code, $previous);
 

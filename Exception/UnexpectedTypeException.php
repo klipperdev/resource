@@ -19,8 +19,6 @@ namespace Klipper\Component\Resource\Exception;
 class UnexpectedTypeException extends InvalidArgumentException
 {
     /**
-     * Constructor.
-     *
      * @param mixed    $value        The value given
      * @param string   $expectedType The expected type
      * @param null|int $position     The position in list
@@ -29,7 +27,7 @@ class UnexpectedTypeException extends InvalidArgumentException
     {
         $msg = sprintf('Expected argument of type "%s", "%s" given', $expectedType, \is_object($value) ? \get_class((object) $value) : \gettype($value));
 
-        if (\is_int($position)) {
+        if (null !== $position) {
             $msg .= sprintf(' at the position "%s"', $position);
         }
 

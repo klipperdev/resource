@@ -20,19 +20,13 @@ use Doctrine\DBAL\Driver\DriverException;
  */
 class MockDriverException extends \Exception implements DriverException
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getErrorCode()
+    public function getErrorCode(): int
     {
         return 4224;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getSQLState(): void
+    public function getSQLState(): ?string
     {
-        null;
+        return null;
     }
 }

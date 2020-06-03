@@ -23,11 +23,9 @@ class ValidationWrapper extends Wrapper implements ValidationWrapperInterface
     /**
      * @var GroupSequence[]|string[]|string[][]
      */
-    protected $validationGroups;
+    protected array $validationGroups;
 
     /**
-     * Constructor.
-     *
      * @param mixed                               $data             The wrapped data
      * @param GroupSequence[]|string[]|string[][] $validationGroups The validation groups
      */
@@ -38,9 +36,6 @@ class ValidationWrapper extends Wrapper implements ValidationWrapperInterface
         $this->validationGroups = $validationGroups;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getValidationGroups(): array
     {
         return $this->validationGroups;

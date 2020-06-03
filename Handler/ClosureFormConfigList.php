@@ -18,24 +18,15 @@ namespace Klipper\Component\Resource\Handler;
  */
 class ClosureFormConfigList extends FormConfigList
 {
-    /**
-     * @var null|\Closure
-     */
-    protected $objectConverter;
+    protected ?\Closure $objectConverter = null;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setObjectConverter(\Closure $converter): ClosureFormConfigList
+    public function setObjectConverter(\Closure $converter): self
     {
         $this->objectConverter = $converter;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convertObjects(array &$list): array
     {
         if ($this->objectConverter instanceof \Closure) {

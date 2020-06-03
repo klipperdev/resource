@@ -27,39 +27,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class FormHandler implements FormHandlerInterface
 {
-    /**
-     * @var ConverterRegistryInterface
-     */
-    protected $converterRegistry;
+    protected ConverterRegistryInterface $converterRegistry;
+
+    protected FormFactoryInterface $formFactory;
+
+    protected Request $request;
+
+    protected TranslatorInterface $translator;
+
+    protected ?int $defaultLimit;
+
+    protected ?int $maxLimit;
 
     /**
-     * @var FormFactoryInterface
-     */
-    protected $formFactory;
-
-    /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
-
-    /**
-     * @var null|int
-     */
-    protected $defaultLimit;
-
-    /**
-     * @var int
-     */
-    protected $maxLimit;
-
-    /**
-     * Constructor.
-     *
      * @param ConverterRegistryInterface $converterRegistry The converter registry
      * @param FormFactoryInterface       $formFactory       The form factory
      * @param RequestStack               $requestStack      The request stack
@@ -77,21 +57,20 @@ class FormHandler implements FormHandlerInterface
         ?int $defaultLimit = null,
         ?int $maxLimit = null
     ) {
+        $request = $requestStack->getCurrentRequest();
+
+        if (null === $request) {
+            throw new InvalidArgumentException('The current request is required in request stack');
+        }
+
         $this->converterRegistry = $converterRegistry;
         $this->formFactory = $formFactory;
-        $this->request = $requestStack->getCurrentRequest();
+        $this->request = $request;
         $this->translator = $translator;
         $this->defaultLimit = $this->validateLimit($defaultLimit);
         $this->maxLimit = $this->validateLimit($maxLimit);
-
-        if (null === $this->request) {
-            throw new InvalidArgumentException('The current request is required in request stack');
-        }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function processForm(FormConfigInterface $config, $object): FormInterface
     {
         $forms = $this->process($config, [$object]);
@@ -99,25 +78,16 @@ class FormHandler implements FormHandlerInterface
         return $forms[0];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function processForms(FormConfigListInterface $config, array $objects = []): array
     {
         return $this->process($config, $objects);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDefaultLimit(): ?int
     {
         return $this->defaultLimit;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMaxLimit(): ?int
     {
         return $this->maxLimit ?? $this->defaultLimit;

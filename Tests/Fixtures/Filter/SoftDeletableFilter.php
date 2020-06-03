@@ -11,6 +11,7 @@
 
 namespace Klipper\Component\Resource\Tests\Fixtures\Filter;
 
+use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Filter\SQLFilter;
@@ -22,13 +23,12 @@ use Doctrine\ORM\Query\Filter\SQLFilter;
  */
 class SoftDeletableFilter extends SQLFilter
 {
-    /**
-     * @var null|EntityManager
-     */
-    protected $entityManager;
+    protected ?EntityManager $entityManager = null;
 
     /**
-     * {@inheritdoc}
+     * @param mixed $targetTableAlias
+     *
+     * @throws DBALException
      */
     public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias)
     {

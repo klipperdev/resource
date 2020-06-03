@@ -44,40 +44,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 abstract class AbstractDomainTest extends TestCase
 {
-    /**
-     * @var EntityManager
-     */
-    protected $em;
+    protected ?EntityManager $em = null;
 
-    /**
-     * @var EventDispatcherInterface
-     */
-    protected $dispatcher;
+    protected ?EventDispatcherInterface $dispatcher = null;
 
-    /**
-     * @var DefaultValueObjectFactory
-     */
-    protected $objectFactory;
+    protected ?DefaultValueObjectFactory $objectFactory = null;
 
-    /**
-     * @var ValidatorInterface
-     */
-    protected $validator;
+    protected ?ValidatorInterface $validator = null;
 
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
+    protected ?TranslatorInterface $translator = null;
 
-    /**
-     * @var FormFactoryInterface
-     */
-    protected $formFactory;
+    protected ?FormFactoryInterface $formFactory = null;
 
-    /**
-     * @var SoftDeletableSubscriber
-     */
-    protected $softDeletable;
+    protected ?SoftDeletableSubscriber $softDeletable = null;
 
     protected function setUp(): void
     {
@@ -140,12 +119,8 @@ abstract class AbstractDomainTest extends TestCase
 
     /**
      * Create resource domain.
-     *
-     * @param string $class
-     *
-     * @return Domain
      */
-    protected function createDomain($class = Foo::class)
+    protected function createDomain(string $class = Foo::class): Domain
     {
         return new Domain(
             $class,
@@ -162,7 +137,7 @@ abstract class AbstractDomainTest extends TestCase
     /**
      * Insert object in database.
      *
-     * @return Foo
+     * @return Bar|Foo
      */
     protected function insertResource(DomainInterface $domain)
     {
@@ -172,11 +147,9 @@ abstract class AbstractDomainTest extends TestCase
     /**
      * Insert objects in database.
      *
-     * @param int $size
-     *
      * @return Bar[]|Foo[]
      */
-    protected function insertResources(DomainInterface $domain, $size)
+    protected function insertResources(DomainInterface $domain, int $size): array
     {
         $this->loadFixtures([]);
 

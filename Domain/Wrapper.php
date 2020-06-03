@@ -24,8 +24,6 @@ class Wrapper implements WrapperInterface
     protected $data;
 
     /**
-     * Constructor.
-     *
      * @param mixed $data The wrapped data
      */
     public function __construct($data)
@@ -33,9 +31,6 @@ class Wrapper implements WrapperInterface
         $this->data = $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getData()
     {
         return $this->data;

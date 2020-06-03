@@ -24,15 +24,9 @@ use Symfony\Component\Validator\ConstraintViolationList;
  */
 class ErrorListener
 {
-    /**
-     * @var string
-     */
-    protected $action;
+    protected string $action;
 
-    /**
-     * @var bool
-     */
-    protected $useConstraint;
+    protected bool $useConstraint;
 
     public function __construct($action, $useConstraint = false)
     {
@@ -63,9 +57,9 @@ class ErrorListener
     /**
      * @param object $entity The entity
      *
-     * @throws \Exception When the entity does not deleted
+     * @throws \Throwable When the entity does not deleted
      */
-    public function doException($entity): void
+    public function doException(object $entity): void
     {
         if ($this->useConstraint) {
             $message = 'The entity does not '.$this->action.' (violation exception)';

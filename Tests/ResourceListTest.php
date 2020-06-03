@@ -54,7 +54,7 @@ final class ResourceListTest extends TestCase
      * @param string $valid            The valid status of resource list
      * @param array  $resourceStatutes The status of resource in list
      */
-    public function testStatus($valid, array $resourceStatutes): void
+    public function testStatus(string $valid, array $resourceStatutes): void
     {
         $resources = [];
 

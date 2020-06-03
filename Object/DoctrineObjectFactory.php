@@ -20,14 +20,9 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class DoctrineObjectFactory implements ObjectFactoryInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
 
     /**
-     * Constructor.
-     *
      * @param EntityManagerInterface $em The entity manager
      */
     public function __construct(EntityManagerInterface $em)
@@ -35,9 +30,6 @@ class DoctrineObjectFactory implements ObjectFactoryInterface
         $this->em = $em;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(string $classname, array $options = [])
     {
         return $this->em->getClassMetadata($classname)->newInstance();

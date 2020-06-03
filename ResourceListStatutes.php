@@ -66,8 +66,6 @@ final class ResourceListStatutes
     public const ERROR = 'error';
 
     /**
-     * Constructor.
-     *
      * @throws ClassNotInstantiableException
      */
     public function __construct()

@@ -21,16 +21,11 @@ class DomainManager implements DomainManagerInterface
     /**
      * @var DomainInterface[]
      */
-    protected $domains = [];
+    protected array $domains = [];
+
+    protected DomainFactoryInterface $factory;
 
     /**
-     * @var DomainFactoryInterface
-     */
-    protected $factory;
-
-    /**
-     * Constructor.
-     *
      * @param DomainFactoryInterface $factory The domain factory
      */
     public function __construct(DomainFactoryInterface $factory)
@@ -38,18 +33,12 @@ class DomainManager implements DomainManagerInterface
         $this->factory = $factory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function has(string $class): bool
     {
         return isset($this->domains[$class])
             || $this->factory->isManagedClass($class);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(string $class): DomainInterface
     {
         $class = $this->factory->getManagedClass($class);

@@ -23,20 +23,14 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 abstract class AbstractResourceList implements \IteratorAggregate, ResourceListInterface
 {
-    /**
-     * @var string
-     */
-    protected $status;
+    protected ?string $status = null;
 
     /**
      * @var ResourceInterface[]
      */
-    protected $resources;
+    protected array $resources = [];
 
-    /**
-     * @var ConstraintViolationListInterface
-     */
-    protected $errors;
+    protected ConstraintViolationListInterface $errors;
 
     /**
      * @var null|ConstraintViolationListInterface|FormErrorIterator[]
@@ -44,8 +38,6 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
     protected $childrenErrors;
 
     /**
-     * Constructor.
-     *
      * @param ResourceInterface[]              $resources The list of resource
      * @param ConstraintViolationListInterface $errors    The list of errors
      */
@@ -53,7 +45,6 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
         array $resources = [],
         ?ConstraintViolationListInterface $errors = null
     ) {
-        $this->resources = [];
         $this->errors = $errors ?? new ConstraintViolationList();
 
         foreach ($resources as $resource) {
@@ -61,9 +52,6 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getStatus(): string
     {
         if (null === $this->status) {
@@ -73,26 +61,17 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
         return $this->status;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getResources(): array
     {
         return $this->resources;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function add(ResourceInterface $resource): void
     {
         $this->reset();
         $this->resources[] = $resource;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addAll(ResourceListInterface $otherList): void
     {
         $this->reset();
@@ -102,16 +81,13 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function all(): array
     {
         return $this->resources;
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
      */
     public function get($offset): ResourceInterface
     {
@@ -122,42 +98,30 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
         return $this->resources[$offset];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function has(int $offset): bool
     {
         return isset($this->resources[$offset]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function set(int $offset, ResourceInterface $resource): void
     {
         $this->reset();
         $this->resources[$offset] = $resource;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function remove(int $offset): void
     {
         $this->reset();
         unset($this->resources[$offset]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function count(): int
     {
         return \count($this->resources);
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
      */
     public function offsetExists($offset): bool
     {
@@ -165,7 +129,7 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
      */
     public function offsetGet($offset): ResourceInterface
     {
@@ -173,7 +137,8 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     * @param mixed $resource
      */
     public function offsetSet($offset, $resource): void
     {
@@ -185,7 +150,7 @@ abstract class AbstractResourceList implements \IteratorAggregate, ResourceListI
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
      */
     public function offsetUnset($offset): void
     {

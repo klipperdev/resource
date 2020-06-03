@@ -26,63 +26,40 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 class ResourceItem implements ResourceInterface
 {
-    /**
-     * @var string
-     */
-    protected $status;
+    protected string $status;
+
+    protected object $data;
+
+    protected ConstraintViolationListInterface $errors;
 
     /**
-     * @var object
-     */
-    protected $data;
-
-    /**
-     * @var ConstraintViolationListInterface
-     */
-    protected $errors;
-
-    /**
-     * Constructor.
-     *
      * @param FormInterface|object             $data   The data instance or form with data instance
      * @param ConstraintViolationListInterface $errors The list of errors
      */
     public function __construct($data, ?ConstraintViolationListInterface $errors = null)
     {
+        $this->validateData($data);
+
         $this->status = ResourceStatutes::PENDING;
         $this->data = $data;
         $this->errors = $errors ?? new ConstraintViolationList();
-
-        $this->validateData($data);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setStatus(string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getStatus(): string
     {
         return $this->status;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getData()
     {
         return $this->data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getRealData()
     {
         $data = $this->data instanceof WrapperInterface ? $this->data->getData() : $this->data;
@@ -90,17 +67,11 @@ class ResourceItem implements ResourceInterface
         return $data instanceof FormInterface ? $data->getData() : $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getErrors(): ConstraintViolationListInterface
     {
         return $this->errors;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFormErrors(): FormErrorIterator
     {
         if ($this->data instanceof FormInterface) {
@@ -110,17 +81,11 @@ class ResourceItem implements ResourceInterface
         throw new InvalidArgumentException('The data of resource is not a form instance, used the "getErrors()" method');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isForm(): bool
     {
         return $this->getData() instanceof FormInterface;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isValid(): bool
     {
         $formSuccess = $this->isForm()

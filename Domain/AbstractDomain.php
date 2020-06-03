@@ -11,11 +11,11 @@
 
 namespace Klipper\Component\Resource\Domain;
 
-use Doctrine\Common\Persistence\Mapping\MappingException;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\Mapping\MappingException;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Klipper\Component\DoctrineExtensions\Util\SqlFilterUtil;
 use Klipper\Component\Resource\Event\ResourceEvent;
 use Klipper\Component\Resource\Exception\InvalidConfigurationException;
@@ -36,64 +36,34 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 abstract class AbstractDomain implements DomainInterface
 {
     public const TYPE_CREATE = 0;
+
     public const TYPE_UPDATE = 1;
+
     public const TYPE_UPSERT = 2;
+
     public const TYPE_DELETE = 3;
+
     public const TYPE_UNDELETE = 4;
 
-    /**
-     * @var string
-     */
-    protected $class;
+    protected string $class;
+
+    protected ?Connection $connection;
+
+    protected ObjectManager $om;
+
+    protected ObjectFactoryInterface $of;
+
+    protected EventDispatcherInterface $ed;
+
+    protected ValidatorInterface $validator;
+
+    protected TranslatorInterface $translator;
+
+    protected bool $debug;
+
+    protected array $disableFilters = [];
 
     /**
-     * @var Connection
-     */
-    protected $connection;
-
-    /**
-     * @var ObjectManager
-     */
-    protected $om;
-
-    /**
-     * @var ObjectFactoryInterface
-     */
-    protected $of;
-
-    /**
-     * @var EventDispatcherInterface
-     */
-    protected $ed;
-
-    /**
-     * @var ValidatorInterface;
-     */
-    protected $validator;
-
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
-
-    /**
-     * @var string
-     */
-    protected $eventPrefix;
-
-    /**
-     * @var bool
-     */
-    protected $debug;
-
-    /**
-     * @var array
-     */
-    protected $disableFilters;
-
-    /**
-     * Constructor.
-     *
      * @param string                   $class          The class name
      * @param ObjectManager            $om             The object manager
      * @param ObjectFactoryInterface   $of             The object factory
@@ -118,7 +88,6 @@ abstract class AbstractDomain implements DomainInterface
         $this->ed = $ed;
         $this->validator = $validator;
         $this->translator = $translator;
-        $this->disableFilters = [];
         $this->debug = $debug;
 
         try {
@@ -135,97 +104,61 @@ abstract class AbstractDomain implements DomainInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getObjectManager(): ObjectManager
     {
         return $this->om;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getClass(): string
     {
         return $this->class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getRepository(): ObjectRepository
     {
         return $this->om->getRepository($this->getClass());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function newInstance(array $options = [])
     {
         return $this->of->create($this->getClass(), $options);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create($resource): ResourceInterface
     {
         return DomainUtil::oneAction($this->creates([$resource], true));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function creates(array $resources, bool $autoCommit = false): ResourceListInterface
     {
         return $this->persist($resources, $autoCommit, Domain::TYPE_CREATE);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function update($resource): ResourceInterface
     {
         return DomainUtil::oneAction($this->updates([$resource], true));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function updates(array $resources, bool $autoCommit = false): ResourceListInterface
     {
         return $this->persist($resources, $autoCommit, Domain::TYPE_UPDATE);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function upsert($resource): ResourceInterface
     {
         return DomainUtil::oneAction($this->upserts([$resource], true));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function upserts(array $resources, bool $autoCommit = false): ResourceListInterface
     {
         return $this->persist($resources, $autoCommit, Domain::TYPE_UPSERT);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function delete($resource, bool $soft = true): ResourceInterface
     {
         return DomainUtil::oneAction($this->deletes([$resource], $soft, true));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function undelete($identifier): ResourceInterface
     {
         return DomainUtil::oneAction($this->undeletes([$identifier], true));
@@ -233,8 +166,6 @@ abstract class AbstractDomain implements DomainInterface
 
     /**
      * Dispatch the event.
-     *
-     * @param ResourceEvent $event The event
      */
     protected function dispatchEvent(ResourceEvent $event): ResourceEvent
     {

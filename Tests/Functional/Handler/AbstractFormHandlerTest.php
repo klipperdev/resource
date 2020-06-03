@@ -40,7 +40,7 @@ abstract class AbstractFormHandlerTest extends TestCase
      *
      * @return FormHandlerInterface
      */
-    protected function createFormHandler(Request $request = null, $limit = null)
+    protected function createFormHandler(?Request $request = null, ?int $limit = null)
     {
         $translator = new Translator('en');
         $ref = new \ReflectionClass(ResourceInterface::class);

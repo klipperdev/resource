@@ -40,7 +40,7 @@ final class ResourceUtilTest extends TestCase
      *
      * @param bool $allowForm The allow form value
      */
-    public function testConvertObjectsToResourceList($allowForm): void
+    public function testConvertObjectsToResourceList(bool $allowForm): void
     {
         $objects = [
             new \stdClass(),
@@ -58,7 +58,7 @@ final class ResourceUtilTest extends TestCase
      *
      * @param bool $allowForm The allow form value
      */
-    public function testValidateObjectResource($allowForm): void
+    public function testValidateObjectResource(bool $allowForm): void
     {
         $obj = new \stdClass();
         ResourceUtil::validateObjectResource($obj, \stdClass::class, $allowForm);

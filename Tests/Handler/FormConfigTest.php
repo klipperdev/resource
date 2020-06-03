@@ -148,12 +148,8 @@ final class FormConfigTest extends TestCase
 
     /**
      * @dataProvider getRequestMethod
-     *
-     * @param null|bool $submitClearMissing
-     * @param string    $method
-     * @param bool      $validSubmitClearMissing
      */
-    public function testGetSubmitClearMissing($submitClearMissing, $method, $validSubmitClearMissing): void
+    public function testGetSubmitClearMissing(?bool $submitClearMissing, string $method, bool $validSubmitClearMissing): void
     {
         $config = new FormConfig(FormType::class);
         $config->setMethod($method);

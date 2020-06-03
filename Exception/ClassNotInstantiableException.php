@@ -18,11 +18,6 @@ namespace Klipper\Component\Resource\Exception;
  */
 class ClassNotInstantiableException extends RuntimeException
 {
-    /**
-     * Constructor.
-     *
-     * @param string $classname The class name
-     */
     public function __construct(string $classname)
     {
         parent::__construct(sprintf('The "%s" class cannot be instantiated', $classname));
