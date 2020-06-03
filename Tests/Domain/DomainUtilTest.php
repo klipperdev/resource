@@ -11,9 +11,9 @@
 
 namespace Klipper\Component\Resource\Tests\Domain;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\DBAL\Exception\DriverException;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\ObjectManager;
 use Klipper\Component\Resource\Domain\Domain;
 use Klipper\Component\Resource\Domain\DomainUtil;
 use Klipper\Component\Resource\Event\PostCreatesEvent;

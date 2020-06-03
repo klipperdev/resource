@@ -11,10 +11,10 @@
 
 namespace Klipper\Component\Resource\Tests\Handler;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\ClassMetadataFactory;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Klipper\Component\DefaultValue\Tests\Fixtures\Object\Foo;
 use Klipper\Component\Resource\Domain\DomainInterface;
 use Klipper\Component\Resource\Handler\DomainFormConfigList;

@@ -11,6 +11,7 @@
 
 namespace Klipper\Component\Resource\Tests\Functional\Domain;
 
+use Doctrine\Persistence\ObjectRepository;
 use Klipper\Component\Resource\Tests\Fixtures\Entity\Foo;
 
 /**
@@ -36,7 +37,7 @@ final class DomainTest extends AbstractDomainTest
     {
         $domain = $this->createDomain();
 
-        static::assertInstanceOf('Doctrine\Common\Persistence\ObjectRepository', $domain->getRepository());
+        static::assertInstanceOf(ObjectRepository::class, $domain->getRepository());
     }
 
     public function testNewInstance(): void
