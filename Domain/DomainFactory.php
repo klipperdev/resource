@@ -100,6 +100,13 @@ class DomainFactory implements DomainFactoryInterface
         );
     }
 
+    public function clear(): void
+    {
+        foreach ($this->or->getManagers() as $manager) {
+            $manager->clear();
+        }
+    }
+
     /**
      * Find the class name by the the class name or the Doctrine resolved target.
      *

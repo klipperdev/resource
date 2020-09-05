@@ -49,4 +49,9 @@ class DomainManager implements DomainManagerInterface
 
         return $this->domains[$class];
     }
+
+    public function clear(): void
+    {
+        $this->factory->clear();
+    }
 }

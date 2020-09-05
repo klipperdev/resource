@@ -236,4 +236,13 @@ final class DomainFactoryTest extends TestCase
         static::assertInstanceOf(Domain::class, $domain);
         static::assertSame(\stdClass::class, $domain->getClass());
     }
+
+    public function testClear(): void
+    {
+        $this->objectManager->expects(static::once())
+            ->method('clear')
+        ;
+
+        $this->factory->clear();
+    }
 }

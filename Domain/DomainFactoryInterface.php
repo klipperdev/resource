@@ -49,4 +49,9 @@ interface DomainFactoryInterface
      * @throws InvalidArgumentException When the class is not registered in doctrine
      */
     public function create(string $class): DomainInterface;
+
+    /**
+     * Clear all managers.
+     */
+    public function clear(): void;
 }

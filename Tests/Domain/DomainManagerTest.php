@@ -89,4 +89,13 @@ final class DomainManagerTest extends TestCase
         static::assertSame($this->domain, $this->manager->get('FooInterface'));
         static::assertTrue($this->manager->has('Foo'));
     }
+
+    public function testClear(): void
+    {
+        $this->factory->expects(static::once())
+            ->method('clear')
+        ;
+
+        $this->manager->clear();
+    }
 }

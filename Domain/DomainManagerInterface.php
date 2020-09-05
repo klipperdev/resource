@@ -35,4 +35,9 @@ interface DomainManagerInterface
      * @throws InvalidArgumentException When the class of resource domain is not managed
      */
     public function get(string $class): DomainInterface;
+
+    /**
+     * Clear all managers.
+     */
+    public function clear(): void;
 }
