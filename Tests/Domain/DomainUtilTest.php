@@ -65,11 +65,26 @@ final class DomainUtilTest extends TestCase
         $rootMsg = 'SQLSTATE[HY000]: General error: 1364 Field \'foo\' doesn\'t have a default value';
         $rootEx = new MockDriverException($rootMsg);
         $prevEx = new MockDriverException('Previous exception', 1, $rootEx);
-        $ex = new DriverException('Exception message', $prevEx);
+
+        /** @var DriverException|MockObject $ex */
+        $ex = $this->getMockBuilder(DriverException::class)->disableOriginalConstructor()->getMock();
+        $refEx = new \ReflectionClass($ex);
+        $refPropMessage = $refEx->getProperty('message');
+        $refPropMessage->setAccessible(true);
+        $refPropMessage->setValue($ex, 'Exception message');
+        $refPropCode = $refEx->getProperty('code');
+        $refPropCode->setAccessible(true);
+        $refPropCode->setValue($ex, 0);
+        $refPropDriverException = $refEx->getParentClass()->getProperty('driverException');
+        $refPropDriverException->setAccessible(true);
+        $refPropDriverException->setValue($ex, $prevEx);
+        $refPropPrevious = $refEx->getParentClass()->getParentClass()->getParentClass()->getParentClass()->getProperty('previous');
+        $refPropPrevious->setAccessible(true);
+        $refPropPrevious->setValue($ex, $prevEx);
 
         $message = DomainUtil::getThrowableMessage($this->getTranslator(), $ex, true);
 
-        static::assertSame('Database error [Doctrine\DBAL\Exception\DriverException]: General error: 1364 Field \'foo\' doesn\'t have a default value', $message);
+        static::assertSame('Database error ['.\get_class($ex).']: General error: 1364 Field \'foo\' doesn\'t have a default value', $message);
     }
 
     public function testTranslatableExceptionMessage(): void

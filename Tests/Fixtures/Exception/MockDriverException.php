@@ -11,14 +11,14 @@
 
 namespace Klipper\Component\Resource\Tests\Fixtures\Exception;
 
-use Doctrine\DBAL\Driver\DriverException;
+use Doctrine\DBAL\Driver\Exception;
 
 /**
  * Mock driver exception.
  *
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-class MockDriverException extends \Exception implements DriverException
+class MockDriverException extends \Exception implements Exception
 {
     public function getErrorCode(): int
     {
