@@ -59,14 +59,17 @@ class ResourceList extends AbstractResourceList
                     $countPending++;
 
                     break;
+
                 case ResourceStatutes::CANCELED:
                     $countCancel++;
 
                     break;
+
                 case ResourceStatutes::ERROR:
                     $countError++;
 
                     break;
+
                 default:
                     $countSuccess++;
 
