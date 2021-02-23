@@ -185,7 +185,7 @@ class FormHandler implements FormHandlerInterface
      */
     private function process(FormConfigInterface $config, array $objects): array
     {
-        list($dataList, $objects) = $this->getDataListObjects($config, $objects);
+        [$dataList, $objects] = $this->getDataListObjects($config, $objects);
         $builderHandlers = $config->getBuilderHandlers();
         $forms = [];
 

@@ -61,7 +61,7 @@ class Domain extends BaseDomain
 
     public function undeletes(array $identifiers, bool $autoCommit = false): ResourceListInterface
     {
-        list($objects, $missingIds) = $this->convertIdentifierToObjects($identifiers);
+        [$objects, $missingIds] = $this->convertIdentifierToObjects($identifiers);
         $errorResources = [];
 
         foreach ($missingIds as $id) {
@@ -113,7 +113,7 @@ class Domain extends BaseDomain
 
     protected function persist(array $resources, bool $autoCommit, int $type, array $errorResources = []): ResourceList
     {
-        list($preEventClass, $postEventClass) = DomainUtil::getEventClasses($type);
+        [$preEventClass, $postEventClass] = DomainUtil::getEventClasses($type);
         $list = ResourceUtil::convertObjectsToResourceList(array_values($resources), $this->getClass());
 
         foreach ($errorResources as $errorResource) {
@@ -151,7 +151,7 @@ class Domain extends BaseDomain
             } elseif ($autoCommit && $hasFlushError && $hasError) {
                 DomainUtil::addResourceError($resource, $this->translator->trans('domain.database_previous_error', [], 'KlipperResource'));
             } else {
-                list($successStatus, $hasFlushError) = $this->doPersistResource($resource, $autoCommit, $type);
+                [$successStatus, $hasFlushError] = $this->doPersistResource($resource, $autoCommit, $type);
                 $hasError = $this->finalizeResourceStatus($resource, $successStatus, $hasError);
             }
         }
@@ -224,7 +224,7 @@ class Domain extends BaseDomain
         $hasFlushError = false;
 
         foreach ($resources as $i => $resource) {
-            list($continue, $hasError) = $this->prepareDeleteResource($resource, $autoCommit, $hasError, $hasFlushError);
+            [$continue, $hasError] = $this->prepareDeleteResource($resource, $autoCommit, $hasError, $hasFlushError);
 
             if (!$continue) {
                 $skipped = $this->doDeleteResource($resource, $soft);
