@@ -11,7 +11,7 @@
 
 namespace Klipper\Component\Resource\Tests\Fixtures\Listener;
 
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Klipper\Component\Resource\Exception\ConstraintViolationException;
 use Symfony\Component\Validator\ConstraintViolation;
