@@ -142,7 +142,7 @@ abstract class BaseDomain extends AbstractDomain
         } else {
             $message = DomainUtil::getThrowableMessage($this->translator, $e, $this->debug);
 
-            $violations->add(new ConstraintViolation($message, $message, [], $object, null, null));
+            $violations->add(new ConstraintViolation($message, $message, [], $object, null, null, null, null, null, $e));
         }
     }
 
