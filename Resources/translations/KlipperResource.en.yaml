@@ -1,0 +1,13 @@
+domain.identifier.error_create: The resource cannot be created because it has an identifier
+domain.identifier.error_update: The resource cannot be updated because it has not an identifier
+domain.identifier.error_delete: The resource cannot be deleted because it has not an identifier
+domain.identifier.error_undeleted: The resource cannot be undeleted because it has not an identifier
+domain.object_does_not_exist: "The object with the identifier \"{{ id }}\" does not exist"
+domain.database_previous_error: Caused by previous internal database error
+domain.database_error: Database error
+domain.resource_type_not_undeleted: The resource type can not be undeleted
+form_handler.different_size_request_list: "The size of the request data list ({{ requestSize }}) is different that the object instance list ({{ objectSize }})"
+form_handler.size_exceeds: "The list of resource sent exceeds the permitted limit ({{ limit }})"
+form_handler.results_field_required: "The \"records\" field is required"
+converter.json.invalid_body: Request body should be a JSON object
+converter.xml.invalid_body: Request body should be a XML object
