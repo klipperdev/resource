@@ -1,0 +1,13 @@
+domain.identifier.error_create: No se puede crear el recurso porque dispone de un usuario
+domain.identifier.error_update: "No se puede actualizar el recurso porque no dispone de usuario"
+domain.identifier.error_delete: "No se puede suprimir el recurso porque no dispone de usuario"
+domain.identifier.error_undeleted: "No se puede restaurar el recurso porque no dispone de usuario"
+domain.object_does_not_exist: "El asunto con usuario \"{{ id }}\" no existe"
+domain.database_previous_error: Causado por un error interno anterior de la base de datos
+domain.database_error: Error de la base de datos
+domain.resource_type_not_undeleted: Este tipo de recurso no se puede suprimir
+form_handler.different_size_request_list: "El tamaño de la solicitud ({{ requestSize }}) es diferente de la lista de las instancias del asunto({{ objectSize }})"
+form_handler.size_exceeds: "La lista de los recursos enviada supera el limite autorizado ({{ limit }})"
+form_handler.results_field_required: "El campo \"records\" es necesario"
+converter.json.invalid_body: El cuerpo de la solicitud debe ser un objeto JSON
+converter.xml.invalid_body: El cuerpo de la solicitud debe ser un objeto XML
