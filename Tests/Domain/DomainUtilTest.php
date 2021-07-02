@@ -228,6 +228,20 @@ final class DomainUtilTest extends TestCase
         static::assertCount(1, $res->getErrors());
     }
 
+    public function testInjectErrorMessageWithInternalError(): void
+    {
+        $this->expectException(\Error::class);
+        $this->expectExceptionMessage('Error message');
+
+        $res = new ResourceItem(new \stdClass());
+
+        static::assertSame(ResourceStatutes::PENDING, $res->getStatus());
+        static::assertCount(0, $res->getErrors());
+
+        $ex = new \Error('Error message');
+        DomainUtil::injectErrorMessage($this->getTranslator(), $res, $ex, true);
+    }
+
     public function testInjectErrorMessageWithConstraintViolation(): void
     {
         $data = new \stdClass();

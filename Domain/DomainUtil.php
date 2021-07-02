@@ -230,9 +230,14 @@ abstract class DomainUtil
      * @param ResourceInterface   $resource   The resource
      * @param \Throwable          $e          The exception on persist action
      * @param bool                $debug      The debug mode
+     *
+     * @throws \Error|\Throwable
      */
     public static function injectErrorMessage(TranslatorInterface $translator, ResourceInterface $resource, \Throwable $e, bool $debug = false): bool
     {
+        if ($e instanceof \Error) {
+            throw $e;
+        }
         if ($e instanceof ConstraintViolationException) {
             $resource->setStatus(ResourceStatutes::ERROR);
             $resource->getErrors()->addAll($e->getConstraintViolations());
