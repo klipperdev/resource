@@ -2,7 +2,8 @@ domain.identifier.error_create: La ressource ne peut pas être créée car elle 
 domain.identifier.error_update: "La ressource ne peut pas être mise à jour car elle n'a pas d'identifiant"
 domain.identifier.error_delete: "La ressource ne peut pas être supprimée car elle n'a pas d'identifiant"
 domain.identifier.error_undeleted: "La ressource ne peut pas être restaurée car elle n'a pas d'identifiant"
-domain.object_does_not_exist: "L'objet avec l'identifiant \"{{ id }}\" n'xiste pas"
+domain.object_does_not_exist: "L'objet avec l'identifiant \"{{ id }}\" n'existe pas"
+domain.resource_does_not_exist: "La ressource n'existe pas"
 domain.database_previous_error: Causé par une précédente erreur interne de la base de données
 domain.database_error: Erreur de la base de données
 domain.resource_type_not_undeleted: Le type de ressource ne peut pas être supprimé

@@ -3,6 +3,7 @@ domain.identifier.error_update: "No se puede actualizar el recurso porque no dis
 domain.identifier.error_delete: "No se puede suprimir el recurso porque no dispone de usuario"
 domain.identifier.error_undeleted: "No se puede restaurar el recurso porque no dispone de usuario"
 domain.object_does_not_exist: "El asunto con usuario \"{{ id }}\" no existe"
+domain.resource_does_not_exist: "El recurso no existe"
 domain.database_previous_error: Causado por un error interno anterior de la base de datos
 domain.database_error: Error de la base de datos
 domain.resource_type_not_undeleted: Este tipo de recurso no se puede suprimir
