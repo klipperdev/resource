@@ -26,7 +26,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -76,8 +76,8 @@ final class FormHandlerTest extends TestCase
 
         $this->translator = new Translator('en');
         $ref = new \ReflectionClass(ResourceInterface::class);
-        $this->translator->addResource('xml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.xlf'), 'en', 'KlipperResource');
-        $this->translator->addLoader('xml', new XliffFileLoader());
+        $this->translator->addResource('yaml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.yaml'), 'en', 'KlipperResource');
+        $this->translator->addLoader('yaml', new YamlFileLoader());
 
         $this->formHandler = new FormHandler(
             $this->converterRegistry,

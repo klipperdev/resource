@@ -15,7 +15,7 @@ use Klipper\Component\Resource\Converter\ConverterInterface;
 use Klipper\Component\Resource\Converter\JsonConverter;
 use Klipper\Component\Resource\ResourceInterface;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -33,8 +33,8 @@ final class JsonConverterTest extends TestCase
     {
         $translator = new Translator('en');
         $ref = new \ReflectionClass(ResourceInterface::class);
-        $translator->addResource('xml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.xlf'), 'en', 'KlipperResource');
-        $translator->addLoader('xml', new XliffFileLoader());
+        $translator->addResource('yaml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.yaml'), 'en', 'KlipperResource');
+        $translator->addLoader('yaml', new YamlFileLoader());
 
         $this->converter = new JsonConverter($translator);
     }

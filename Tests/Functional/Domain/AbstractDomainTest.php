@@ -31,7 +31,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -92,8 +92,8 @@ abstract class AbstractDomainTest extends TestCase
 
         $this->translator = new Translator('en');
         $ref = new \ReflectionClass(ResourceInterface::class);
-        $this->translator->addResource('xml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.xlf'), 'en', 'KlipperResource');
-        $this->translator->addLoader('xml', new XliffFileLoader());
+        $this->translator->addResource('yaml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.yaml'), 'en', 'KlipperResource');
+        $this->translator->addLoader('yaml', new YamlFileLoader());
     }
 
     protected function tearDown(): void

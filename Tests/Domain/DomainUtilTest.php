@@ -35,7 +35,7 @@ use Klipper\Component\Resource\ResourceStatutes;
 use Klipper\Component\Resource\Tests\Fixtures\Exception\MockDriverException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
@@ -346,9 +346,9 @@ final class DomainUtilTest extends TestCase
     {
         $translator = new Translator('en');
         $ref = new \ReflectionClass(ResourceInterface::class);
-        $translator->addResource('xml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.xlf'), 'en', 'KlipperResource');
-        $translator->addResource('xml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.xlf'), 'en', 'validators');
-        $translator->addLoader('xml', new XliffFileLoader());
+        $translator->addResource('yaml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.yaml'), 'en', 'KlipperResource');
+        $translator->addResource('yaml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.yaml'), 'en', 'validators');
+        $translator->addLoader('yaml', new YamlFileLoader());
 
         return $translator;
     }

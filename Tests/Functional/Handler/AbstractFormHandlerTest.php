@@ -21,7 +21,7 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validation;
 
@@ -44,8 +44,8 @@ abstract class AbstractFormHandlerTest extends TestCase
     {
         $translator = new Translator('en');
         $ref = new \ReflectionClass(ResourceInterface::class);
-        $translator->addResource('xml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.xlf'), 'en', 'KlipperResource');
-        $translator->addLoader('xml', new XliffFileLoader());
+        $translator->addResource('yaml', realpath(\dirname($ref->getFileName()).'/Resources/translations/KlipperResource.en.yaml'), 'en', 'KlipperResource');
+        $translator->addLoader('yaml', new YamlFileLoader());
 
         $converterRegistry = new ConverterRegistry([
             new JsonConverter($translator),
