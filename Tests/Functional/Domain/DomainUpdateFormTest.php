@@ -66,7 +66,7 @@ final class DomainUpdateFormTest extends AbstractDomainTest
         static::assertCount(1, $resource->getFormErrors());
 
         $errors = $resource->getFormErrors();
-        static::assertRegExp('/This value should not be blank./', $errors[0]->getMessage());
+        static::assertMatchesRegularExpression('/This value should not be blank./', $errors[0]->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -109,7 +109,7 @@ final class DomainUpdateFormTest extends AbstractDomainTest
         static::assertCount(0, $resource->getFormErrors());
 
         $errors = $resource->getErrors();
-        static::assertRegExp($this->getIntegrityViolationMessage(), $errors[0]->getMessage());
+        static::assertMatchesRegularExpression($this->getIntegrityViolationMessage(), $errors[0]->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -242,8 +242,8 @@ final class DomainUpdateFormTest extends AbstractDomainTest
 
         static::assertTrue($resources->hasErrors());
         $errors1 = $resources->get(0)->getFormErrors();
-        static::assertRegExp('/This value should not be blank./', $errors1[0]->getMessage());
-        static::assertRegExp($this->getIntegrityViolationMessage(), $resources->get(1)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression('/This value should not be blank./', $errors1[0]->getMessage());
+        static::assertMatchesRegularExpression($this->getIntegrityViolationMessage(), $resources->get(1)->getErrors()->get(0)->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -297,8 +297,8 @@ final class DomainUpdateFormTest extends AbstractDomainTest
         static::assertCount(1, $resources->get(0)->getErrors());
         static::assertCount(1, $resources->get(1)->getErrors());
 
-        static::assertRegExp($this->getIntegrityViolationMessage(), $resources->get(0)->getErrors()->get(0)->getMessage());
-        static::assertRegExp('/Caused by previous internal database error/', $resources->get(1)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression($this->getIntegrityViolationMessage(), $resources->get(0)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression('/Caused by previous internal database error/', $resources->get(1)->getErrors()->get(0)->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -420,7 +420,7 @@ final class DomainUpdateFormTest extends AbstractDomainTest
         $resource = $domain->update($form);
         static::assertFalse($resource->isValid());
         static::assertSame(ResourceStatutes::ERROR, $resource->getStatus());
-        static::assertRegExp('/The resource cannot be updated because it has not an identifier/', $resource->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression('/The resource cannot be updated because it has not an identifier/', $resource->getErrors()->get(0)->getMessage());
     }
 
     protected function runTestUpdatesException(DomainInterface $domain, array $objects, $errorMessage, $autoCommit = false): void
@@ -454,7 +454,7 @@ final class DomainUpdateFormTest extends AbstractDomainTest
         $errors = $autoCommit
             ? $resources->get(0)->getFormErrors()
             : $resources->getErrors();
-        static::assertRegExp($errorMessage, $errors[0]->getMessage());
+        static::assertMatchesRegularExpression($errorMessage, $errors[0]->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);

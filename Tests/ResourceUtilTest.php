@@ -93,7 +93,7 @@ final class ResourceUtilTest extends TestCase
     public function testValidateObjectResourceWithoutAllowedForm(): void
     {
         $this->expectException(\Klipper\Component\Resource\Exception\UnexpectedTypeException::class);
-        $this->expectExceptionMessageRegExp('/Expected argument of type "stdClass", "([\\w\\_0-9]+)" given/');
+        $this->expectExceptionMessageMatches('/Expected argument of type "stdClass", "([\\w\\_0-9]+)" given/');
 
         /** @var FormInterface|MockObject */
         $form = $this->getMockBuilder(FormInterface::class)->getMock();

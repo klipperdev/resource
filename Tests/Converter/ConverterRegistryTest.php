@@ -58,7 +58,7 @@ final class ConverterRegistryTest extends TestCase
     public function testGetNonExistentConverter(): void
     {
         $this->expectException(\Klipper\Component\Resource\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/Could not load content converter "(\\w+)"/');
+        $this->expectExceptionMessageMatches('/Could not load content converter "(\\w+)"/');
 
         $this->registry->get('bar');
     }

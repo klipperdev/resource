@@ -74,15 +74,17 @@ final class DomainFormConfigListTest extends TestCase
             new Foo(),
             new Foo(),
         ];
+        $newInstancePos = 0;
 
-        $this->domain->expects(static::at(0))
+        $this->domain->expects(static::atLeast(2))
             ->method('newInstance')
             ->willReturn($instances[0])
-        ;
+            ->willReturnCallback(static function () use ($instances, &$newInstancePos) {
+                $pos = $newInstancePos;
+                ++$newInstancePos;
 
-        $this->domain->expects(static::at(1))
-            ->method('newInstance')
-            ->willReturn($instances[1])
+                return $instances[$pos];
+            })
         ;
 
         $res = $this->config->convertObjects($list);

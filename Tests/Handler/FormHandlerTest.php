@@ -312,7 +312,7 @@ final class FormHandlerTest extends TestCase
                 ->willReturn($form)
             ;
 
-            $this->formFactory->expects(static::at(0))
+            $this->formFactory->expects(static::once())
                 ->method('createBuilder')
                 ->willReturn($formBuilder)
             ;

@@ -16,8 +16,8 @@ use Klipper\Component\Resource\Handler\FormConfigList;
 use Klipper\Component\Resource\Handler\FormConfigListInterface;
 use Klipper\Component\Resource\Tests\Fixtures\Entity\Foo;
 use Klipper\Component\Resource\Tests\Fixtures\Form\FooType;
-use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -178,7 +178,7 @@ final class FormHandlerTest extends AbstractFormHandlerTest
     public function testLimitMethod($size, $defaultLimit, $methodLimit): void
     {
         $this->expectException(\Klipper\Component\Resource\Exception\InvalidResourceException::class);
-        $this->expectExceptionMessageRegExp('/The list of resource sent exceeds the permitted limit \\(\\d+\\)/');
+        $this->expectExceptionMessageMatches('/The list of resource sent exceeds the permitted limit \\(\\d+\\)/');
 
         $data = [];
         $objects = [];
@@ -209,7 +209,7 @@ final class FormHandlerTest extends AbstractFormHandlerTest
      *
      * @return FormConfigListInterface|MockObject
      */
-    protected function createFormConfigList($objects, InvokedRecorder $count)
+    protected function createFormConfigList($objects, InvocationOrder $count)
     {
         $config = $this->getMockBuilder(FormConfigList::class)
             ->setConstructorArgs([FooType::class, [], Request::METHOD_POST, 'json'])

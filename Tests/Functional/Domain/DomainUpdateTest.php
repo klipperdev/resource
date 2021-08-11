@@ -174,8 +174,8 @@ final class DomainUpdateTest extends AbstractDomainTest
         static::assertInstanceOf(ResourceListInterface::class, $resources);
 
         static::assertTrue($resources->hasErrors());
-        static::assertRegExp('/This value should not be blank./', $resources->get(0)->getErrors()->get(0)->getMessage());
-        static::assertRegExp($this->getIntegrityViolationMessage(), $resources->get(1)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression('/This value should not be blank./', $resources->get(0)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression($this->getIntegrityViolationMessage(), $resources->get(1)->getErrors()->get(0)->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -224,8 +224,8 @@ final class DomainUpdateTest extends AbstractDomainTest
         static::assertCount(1, $resources->get(0)->getErrors());
         static::assertCount(1, $resources->get(1)->getErrors());
 
-        static::assertRegExp($this->getIntegrityViolationMessage(), $resources->get(0)->getErrors()->get(0)->getMessage());
-        static::assertRegExp('/Caused by previous internal database error/', $resources->get(1)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression($this->getIntegrityViolationMessage(), $resources->get(0)->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression('/Caused by previous internal database error/', $resources->get(1)->getErrors()->get(0)->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -321,7 +321,7 @@ final class DomainUpdateTest extends AbstractDomainTest
         $resource = $domain->update($this->wrap($object, $wrapped));
         static::assertFalse($resource->isValid());
         static::assertSame(ResourceStatutes::ERROR, $resource->getStatus());
-        static::assertRegExp('/The resource cannot be updated because it has not an identifier/', $resource->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression('/The resource cannot be updated because it has not an identifier/', $resource->getErrors()->get(0)->getMessage());
     }
 
     protected function runTestUpdateException(DomainInterface $domain, $object, $errorMessage): void
@@ -348,7 +348,7 @@ final class DomainUpdateTest extends AbstractDomainTest
 
         $resource = $domain->update($object);
         static::assertCount(1, $resource->getErrors());
-        static::assertRegExp($errorMessage, $resource->getErrors()->get(0)->getMessage());
+        static::assertMatchesRegularExpression($errorMessage, $resource->getErrors()->get(0)->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);
@@ -389,7 +389,7 @@ final class DomainUpdateTest extends AbstractDomainTest
             ? $resources->get(0)->getErrors()
             : $resources->getErrors();
         static::assertCount(1, $errors);
-        static::assertRegExp($errorMessage, $errors[0]->getMessage());
+        static::assertMatchesRegularExpression($errorMessage, $errors[0]->getMessage());
 
         static::assertTrue($preEvent);
         static::assertTrue($postEvent);

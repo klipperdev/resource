@@ -26,7 +26,7 @@ final class DomainTest extends AbstractDomainTest
     public function testMappingException(): void
     {
         $this->expectException(\Klipper\Component\Resource\Exception\InvalidConfigurationException::class);
-        $this->expectExceptionMessageRegExp('/The "([\\w\\\\\\/]+)" class is not managed by doctrine object manager/');
+        $this->expectExceptionMessageMatches('/The "([\\w\\\\\\/]+)" class is not managed by doctrine object manager/');
 
         $class = 'DateTime';
 

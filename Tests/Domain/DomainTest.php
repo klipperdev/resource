@@ -156,7 +156,7 @@ final class DomainTest extends TestCase
     public function testInvalidObjectManager(): void
     {
         $this->expectException(\Klipper\Component\Resource\Exception\InvalidConfigurationException::class);
-        $this->expectExceptionMessageRegExp('/The "([\\w\\\\]+)" class is not managed by doctrine object manager/');
+        $this->expectExceptionMessageMatches('/The "([\\w\\\\]+)" class is not managed by doctrine object manager/');
 
         $objectManager = $this->createMockObjectManager(ObjectManager::class);
         $objectManager->expects(static::once())
