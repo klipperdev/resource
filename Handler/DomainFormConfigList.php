@@ -99,7 +99,7 @@ class DomainFormConfigList extends FormConfigList
             $class = ClassUtils::getClass($object);
             $metaFactory = $this->domain->getObjectManager()->getMetadataFactory();
 
-            if ($metaFactory->hasMetadataFor($class)) {
+            if ($metaFactory->hasMetadataFor($class) || $metaFactory->isTransient($class)) {
                 $validationGroups = array_merge($options['validation_groups'] ?? [], ['Default']);
                 $validationGroups[] = empty($metaFactory->getMetadataFor($class)->getIdentifierValues($object))
                     ? 'Create'
