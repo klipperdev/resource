@@ -297,6 +297,7 @@ final class DomainUpdateTest extends AbstractDomainTest
         $this->expectExceptionMessage('Expected argument of type "Klipper\\Component\\Resource\\Tests\\Fixtures\\Entity\\Foo", "integer" given at the position "0"');
 
         $domain = $this->createDomain();
+
         /** @var object $object */
         $object = 42;
 
@@ -311,6 +312,7 @@ final class DomainUpdateTest extends AbstractDomainTest
     public function testErrorIdentifier(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $object */
         $object = $domain->newInstance();
         $object->setName('Bar');

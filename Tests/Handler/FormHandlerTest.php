@@ -62,6 +62,7 @@ final class FormHandlerTest extends TestCase
     protected function setUp(): void
     {
         $request = $this->getMockBuilder(Request::class)->disableOriginalConstructor()->getMock();
+
         /** @var MockObject|RequestStack $requestStack */
         $requestStack = $this->getMockBuilder(RequestStack::class)->disableOriginalConstructor()->getMock();
         $requestStack->expects(static::any())

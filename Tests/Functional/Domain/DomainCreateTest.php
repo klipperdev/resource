@@ -46,6 +46,7 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreateWithErrorValidation(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
 
@@ -58,6 +59,7 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreateWithErrorDatabase(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
         $foo->setName('Bar');
@@ -73,6 +75,7 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreate(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
         $foo->setName('Bar');
@@ -115,8 +118,10 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreatesWithErrorValidation(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
@@ -129,9 +134,11 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreatesWithErrorDatabase(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
         $foo1->setName('Bar');
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar');
@@ -161,8 +168,10 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreatesAutoCommitWithErrorValidationAndErrorDatabase(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar');
@@ -214,9 +223,11 @@ final class DomainCreateTest extends AbstractDomainTest
         $domain = $this->createDomain();
 
         $this->loadFixtures([]);
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
         $foo1->setName('Bar');
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar');
@@ -269,8 +280,10 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreatesAutoCommitWithErrorValidationAndSuccess(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar');
@@ -302,6 +315,7 @@ final class DomainCreateTest extends AbstractDomainTest
         $this->expectExceptionMessage('Expected argument of type "Klipper\\Component\\Resource\\Tests\\Fixtures\\Entity\\Foo", "integer" given at the position "0"');
 
         $domain = $this->createDomain();
+
         /** @var object $object */
         $object = 42;
 
@@ -328,10 +342,12 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreateAutoCommitErrorOnPrePersistAndSuccessObjectsWithViolationException(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
         $foo1->setName('Bar 1');
         $foo1->setDetail('Detail 1');
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar 2');
@@ -365,10 +381,12 @@ final class DomainCreateTest extends AbstractDomainTest
     public function testCreateAutoCommitErrorOnPrePersistAndSuccessObjects(bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
         $foo1->setName('Bar 1');
         $foo1->setDetail('Detail 1');
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar 2');
@@ -476,10 +494,12 @@ final class DomainCreateTest extends AbstractDomainTest
     protected function runTestCreates(bool $autoCommit, bool $wrapped): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
         $foo1->setName('Bar 1');
         $foo1->setDetail('Detail 1');
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
         $foo2->setName('Bar 2');

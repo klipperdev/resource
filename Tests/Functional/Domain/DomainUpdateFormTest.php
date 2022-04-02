@@ -408,6 +408,7 @@ final class DomainUpdateFormTest extends AbstractDomainTest
     public function testErrorIdentifier(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $object */
         $object = $domain->newInstance();
         $form = $this->buildForm($object, [

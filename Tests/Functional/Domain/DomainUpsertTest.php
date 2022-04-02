@@ -62,6 +62,7 @@ final class DomainUpsertTest extends AbstractDomainTest
             $foo->setName(null);
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo */
             $foo = $domain->newInstance();
         }
@@ -83,6 +84,7 @@ final class DomainUpsertTest extends AbstractDomainTest
             $foo->setDetail(null);
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo */
             $foo = $domain->newInstance();
             $foo->setName('Bar');
@@ -105,6 +107,7 @@ final class DomainUpsertTest extends AbstractDomainTest
             $foo->setName('Foo');
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo */
             $foo = $domain->newInstance();
             $foo->setName('Bar');
@@ -159,8 +162,10 @@ final class DomainUpsertTest extends AbstractDomainTest
             }
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
             $objects = [$foo1, $foo2];
@@ -186,9 +191,11 @@ final class DomainUpsertTest extends AbstractDomainTest
             }
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
             $foo1->setName('Bar');
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
             $foo2->setName('Bar');
@@ -224,8 +231,10 @@ final class DomainUpsertTest extends AbstractDomainTest
             $objects[1]->setDetail(null);
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
             $foo2->setName('Bar');
@@ -283,9 +292,11 @@ final class DomainUpsertTest extends AbstractDomainTest
             $objects[1]->setDescription('test 2');
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
             $foo1->setName('Bar');
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
             $foo2->setName('Bar');
@@ -347,8 +358,10 @@ final class DomainUpsertTest extends AbstractDomainTest
             $objects[1]->setDetail('New Detail 2');
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
             $foo2->setName('Bar');
@@ -394,10 +407,12 @@ final class DomainUpsertTest extends AbstractDomainTest
             }
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
             $foo1->setName('Bar 1');
             $foo1->setDetail('Detail 1');
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
             $foo2->setName('Bar 2');
@@ -430,6 +445,7 @@ final class DomainUpsertTest extends AbstractDomainTest
         $this->expectExceptionMessage('Expected argument of type "Klipper\\Component\\Resource\\Tests\\Fixtures\\Entity\\Foo", "integer" given at the position "0"');
 
         $domain = $this->createDomain();
+
         /** @var object $object */
         $object = 42;
 

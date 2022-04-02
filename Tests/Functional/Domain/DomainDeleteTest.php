@@ -48,6 +48,7 @@ final class DomainDeleteTest extends AbstractDomainTest
         // soft delete
         $this->em->remove($objects[0]);
         $this->em->flush();
+
         /** @var Bar[] $objects */
         $objects = $domain->getRepository()->findAll();
         static::assertCount(1, $objects);

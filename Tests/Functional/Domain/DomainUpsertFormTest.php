@@ -53,6 +53,7 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             $foo->setName(null);
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo */
             $foo = $domain->newInstance();
         }
@@ -109,6 +110,7 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             $foo->setDetail(null);
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo */
             $foo = $domain->newInstance();
             $foo->setName('Bar');
@@ -166,6 +168,7 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             $foo->setDetail(null);
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo */
             $foo = $domain->newInstance();
             $foo->setName('Bar');
@@ -232,8 +235,10 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             ];
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
 
@@ -274,8 +279,10 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             ];
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
 
@@ -325,8 +332,10 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             ];
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
 
@@ -397,8 +406,10 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             ];
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
 
@@ -475,8 +486,10 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             ];
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
 
@@ -534,8 +547,10 @@ final class DomainUpsertFormTest extends AbstractDomainTest
             ];
         } else {
             $this->loadFixtures([]);
+
             /** @var Foo $foo1 */
             $foo1 = $domain->newInstance();
+
             /** @var Foo $foo2 */
             $foo2 = $domain->newInstance();
 

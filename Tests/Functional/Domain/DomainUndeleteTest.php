@@ -65,6 +65,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
         $this->configureEntityManager();
 
         $domain = $this->createDomain($this->softClass);
+
         /** @var Bar $object */
         $object = $this->insertResource($domain);
 
@@ -105,6 +106,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
         $this->configureEntityManager();
 
         $domain = $this->createDomain($this->softClass);
+
         /** @var Bar[] $objects */
         $objects = $this->insertResources($domain, 2);
 
@@ -153,6 +155,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
         $this->loadFixtures([]);
 
         $domain = $this->createDomain($this->softClass);
+
         /** @var Bar $object */
         $object = $domain->newInstance();
 
@@ -186,6 +189,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
         $this->loadFixtures([]);
 
         $domain = $this->createDomain($this->softClass);
+
         /** @var Bar $object */
         $objects = [$domain->newInstance(), $domain->newInstance()];
 
@@ -238,6 +242,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
 
         $successStatus = $autoCommit ? ResourceStatutes::UNDELETED : ResourceStatutes::CANCELED;
         $domain = $this->createDomain($this->softClass);
+
         /** @var Bar[] $objects */
         $objects = $this->insertResources($domain, 4);
 
@@ -295,6 +300,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
         $this->loadFixtures([]);
 
         $domain = $this->createDomain();
+
         /** @var Foo $object */
         $object = $domain->newInstance();
 
@@ -329,6 +335,7 @@ final class DomainUndeleteTest extends AbstractDomainTest
         $this->loadFixtures([]);
 
         $domain = $this->createDomain();
+
         /** @var Foo[] $objects */
         $objects = [$domain->newInstance(), $domain->newInstance()];
 

@@ -34,6 +34,7 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreateWithErrorValidation(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
         $form = $this->buildForm($foo, [
@@ -78,6 +79,7 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreateWithErrorDatabase(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
         $form = $this->buildForm($foo, [
@@ -123,6 +125,7 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreate(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
         $form = $this->buildForm($foo, [
@@ -166,8 +169,10 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreatesWithErrorValidation(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
@@ -184,8 +189,10 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreatesWithErrorDatabase(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
@@ -207,8 +214,10 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreatesAutoCommitWithErrorValidationAndErrorDatabase(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
@@ -260,8 +269,10 @@ final class DomainCreateFormTest extends AbstractDomainTest
         $domain = $this->createDomain();
 
         $this->loadFixtures([]);
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
@@ -316,8 +327,10 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreatesAutoCommitWithErrorValidationAndSuccess(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
@@ -352,6 +365,7 @@ final class DomainCreateFormTest extends AbstractDomainTest
     public function testCreateWithMissingFormSubmission(): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo */
         $foo = $domain->newInstance();
 
@@ -446,8 +460,10 @@ final class DomainCreateFormTest extends AbstractDomainTest
     protected function runTestCreates($autoCommit): void
     {
         $domain = $this->createDomain();
+
         /** @var Foo $foo1 */
         $foo1 = $domain->newInstance();
+
         /** @var Foo $foo2 */
         $foo2 = $domain->newInstance();
 
