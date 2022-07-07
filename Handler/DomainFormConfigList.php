@@ -11,6 +11,7 @@
 
 namespace Klipper\Component\Resource\Handler;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Klipper\Component\DoctrineExtra\Util\ClassUtils;
 use Klipper\Component\Resource\Domain\DomainInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -141,8 +142,23 @@ class DomainFormConfigList extends FormConfigList
      */
     protected function findObjects(array $ids): array
     {
-        $foundObjects = $this->domain->getRepository()->findBy([
-            $this->identifier => array_unique($ids),
+        $em = $this->domain->getObjectManager();
+        $repo = $this->domain->getRepository();
+        $identifiers = array_unique($ids);
+
+        if ($em instanceof EntityManagerInterface) {
+            $conn = $em->getConnection();
+
+            $classMeta = $em->getClassMetadata($this->domain->getClass());
+            $type = $classMeta->getFieldMapping($this->identifier)['type'];
+
+            foreach ($identifiers as &$identifier) {
+                $identifier = $conn->convertToDatabaseValue($identifier, $type);
+            }
+        }
+
+        $foundObjects = $repo->findBy([
+            $this->identifier => $identifiers,
         ]);
         $mapFinds = [];
         $objects = [];
