@@ -136,7 +136,7 @@ class FormHandler implements FormHandlerInterface
             try {
                 $dataList = $config->findList($dataList);
             } catch (InvalidResourceException $e) {
-                throw new InvalidResourceException($this->translator->trans('form_handler.results_field_required', [], 'KlipperResource'));
+                throw new InvalidResourceException($this->translator->trans('form_handler.results_field_required', [], 'KlipperResource'), 0, $e);
             }
         } else {
             $dataList = [$dataList];
