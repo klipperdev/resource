@@ -22,7 +22,7 @@
         "symfony/expression-language": "^5.4.0",
         "symfony/translation": "^5.4.0",
         "doctrine/persistence": "^2.0.0",
-        "doctrine/orm": "^2.8.0",
+        "doctrine/orm": "^2.13.0",
         "klipper/doctrine-extra": "^2.0.0",
         "klipper/doctrine-extensions": "^2.0.0",
         "klipper/model-contracts": "^2.0.0"
