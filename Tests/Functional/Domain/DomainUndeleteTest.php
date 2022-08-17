@@ -280,13 +280,13 @@ final class DomainUndeleteTest extends AbstractDomainTest
 
     public function testUndeleteAutoCommitNonExistentAndExistentObjects(): void
     {
-        //TODO
+        // TODO
         static::assertNull(null);
     }
 
     public function testDeleteAutoCommitErrorAndSuccessObjects(): void
     {
-        //TODO
+        // TODO
         static::assertNull(null);
     }
 

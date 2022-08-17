@@ -67,7 +67,7 @@ class SoftDeletableSubscriber implements EventSubscriber
             if ($object instanceof SoftDeletableInterface) {
                 $oldValue = $object->getDeletedAt();
 
-                if ($oldValue instanceof \Datetime) {
+                if ($oldValue instanceof \DateTime) {
                     continue; // want to hard delete
                 }
 
