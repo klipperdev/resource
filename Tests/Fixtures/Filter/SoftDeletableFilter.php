@@ -30,7 +30,7 @@ class SoftDeletableFilter extends SQLFilter
      *
      * @throws DBALException
      */
-    public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias)
+    public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias): string
     {
         $conn = $this->getEntityManager()->getConnection();
         $platform = $conn->getDatabasePlatform();
