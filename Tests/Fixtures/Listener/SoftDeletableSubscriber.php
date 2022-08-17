@@ -60,7 +60,7 @@ class SoftDeletableSubscriber implements EventSubscriber
             return;
         }
 
-        $em = $args->getEntityManager();
+        $em = $args->getObjectManager();
         $uow = $em->getUnitOfWork();
 
         foreach ($uow->getScheduledEntityDeletions() as $object) {
