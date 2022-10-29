@@ -50,8 +50,8 @@ final class DomainUndeleteTest extends AbstractDomainTest
         return [
             [false, 'object'],
             [false, 'identifier'],
-            [true,  'object'],
-            [true,  'identifier'],
+            [true, 'object'],
+            [true, 'identifier'],
         ];
     }
 

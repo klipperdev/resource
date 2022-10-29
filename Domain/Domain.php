@@ -273,9 +273,9 @@ class Domain extends BaseDomain
      * @param ResourceInterface $resource The resource
      * @param bool              $soft     The soft deletable
      *
-     * @throws
-     *
      * @return bool Check if the resource is skipped or deleted
+     *
+     * @throws
      */
     protected function doDeleteResource(ResourceInterface $resource, bool $soft): bool
     {

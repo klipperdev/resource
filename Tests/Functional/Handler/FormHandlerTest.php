@@ -160,11 +160,11 @@ final class FormHandlerTest extends AbstractFormHandlerTest
     public function getLimits()
     {
         return [
-            [10, null, 5,    5],
-            [10, 5,    null, 5],
+            [10, null, 5, 5],
+            [10, 5, null, 5],
 
-            [10, null, 0,    1],
-            [10, 0,    null, 1],
+            [10, null, 0, 1],
+            [10, 0, null, 1],
         ];
     }
 

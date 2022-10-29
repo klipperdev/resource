@@ -38,9 +38,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 final class DomainTest extends TestCase
 {
-    /**
-     * @var
-     */
     protected ?DomainFactory $factory = null;
 
     /**
@@ -78,9 +75,6 @@ final class DomainTest extends TestCase
      */
     protected $translator;
 
-    /**
-     * @var
-     */
     protected ?Domain $domain = null;
 
     protected function setUp(): void

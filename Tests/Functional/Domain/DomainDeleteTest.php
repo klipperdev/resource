@@ -64,9 +64,9 @@ final class DomainDeleteTest extends AbstractDomainTest
     {
         return [
             [false, true],
-            [true,  true],
+            [true, true],
             [false, false],
-            [true,  false],
+            [true, false],
         ];
     }
 

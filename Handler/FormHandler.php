@@ -179,9 +179,9 @@ class FormHandler implements FormHandlerInterface
      * @param FormConfigInterface $config  The form config
      * @param array[]|object[]    $objects The list of object instance
      *
-     * @throws InvalidResourceException When the size if request data and the object instances is different
-     *
      * @return FormInterface[]
+     *
+     * @throws InvalidResourceException When the size if request data and the object instances is different
      */
     private function process(FormConfigInterface $config, array $objects): array
     {
